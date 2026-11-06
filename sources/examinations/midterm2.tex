@@ -1,0 +1,264 @@
+% =====================================================================
+% PH7302 Condensed Matter Physics -- Mid-Semester Examination (Paper 2)
+% Department of Physics, National Institute of Technology Calicut
+% Academic Year 2026-27
+%
+% Duration : 2 hours
+% Max Marks: 45
+% Sections : A (5) + B (24) + C (16)
+% Total Marks Attempted: 5 + 24 + 16 = 45 marks
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[a4paper,margin=2.2cm]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{braket}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tabularx}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,arrows.meta,calc,positioning}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{multicol}
+
+\usepackage[colorlinks=true,
+            linkcolor=black,
+            urlcolor=blue,
+            citecolor=blue]{hyperref}
+
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\EF}{E_{\mathrm{F}}}
+\newcommand{\TF}{T_{\mathrm{F}}}
+\newcommand{\TD}{\Theta_{\mathrm{D}}}
+\newcommand{\TE}{\Theta_{\mathrm{E}}}
+\newcommand{\Cv}{C_{V}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% =====================================================================
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries Department of Physics}\\[2pt]
+    {\Large\bfseries National Institute of Technology Calicut}\\[10pt]
+    {\Huge\bfseries Mid-Semester Examination}\\[4pt]
+    {\LARGE\bfseries PH7302 -- Condensed Matter Physics (2026--27)}\\[4pt]
+    {\large\bfseries Roll No \& Name: \rule{0.45\linewidth}{0.4pt}}\\[10pt]
+\end{center}
+
+\noindent\textbf{Duration: 2 Hours} \hfill
+\textbf{Maximum Marks: 45}\par\vspace{2pt}
+
+\noindent\textbf{General Instructions.}
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+    \item Section A: 5 MCQs (Q1--Q5, 1 mark each; all compulsory).
+    \item Section B: Attempt \textbf{any three} of Q6--Q9 (8 marks each, $3 \times 8 = 24$ marks).
+    \item Section C: Q10 is \textbf{compulsory}; answer \textbf{any one} from Q11 or Q12 (8 marks each, $2 \times 8 = 16$ marks).
+    \item No negative marking in Section A.
+    \item Physical constants:
+          $h = 6.626\times10^{-34}\,\mathrm{J\,s}$, $\hbar = 1.054\times10^{-34}\,\mathrm{J\,s}$, $e = 1.602\times10^{-19}\,\mathrm{C}$, $m_{e}=9.11\times10^{-31}\,\mathrm{kg}$, $\kB=1.38\times10^{-23}\,\mathrm{J\,K^{-1}}$, $N_{\mathrm{A}}=6.022\times10^{23}\,\mathrm{mol^{-1}}$, $1\,\mathrm{eV}=1.602\times10^{-19}\,\mathrm{J}$, $1\,\mathrm{amu}=1.66\times10^{-27}\,\mathrm{kg}$.
+\end{enumerate}
+
+\vspace{6pt}\hrule\vspace{10pt}
+
+% =====================================================================
+\section*{Section A --- Multiple Choice Questions}
+\noindent\textit{[Questions 1--5. $5 \times 1 = 5$ marks. All questions are compulsory.]}
+\vspace{4pt}
+
+\begin{enumerate}[leftmargin=*,itemsep=6pt,series=questions]
+
+\item A plane has intercepts $4a$, $2b$, $\infty c$. Its Miller indices are:
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*)]
+\item $(4,2,0)$
+\item $(\tfrac{1}{4},\tfrac{1}{2},0)$
+\item $(1,2,0)$
+\item $(0,1,2)$
+\end{enumerate}
+\end{multicols}
+
+\item The packing fraction of an FCC crystal is:
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*)]
+\item $0.52$
+\item $0.68$
+\item $0.74$
+\item $0.91$
+\end{enumerate}
+\end{multicols}
+
+\item In a monoatomic chain, the group velocity at the Brillouin-zone boundary is:
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*)]
+\item $\sqrt{C/M}\,a$
+\item $\sqrt{C/M}\,a/2$
+\item $0$
+\item $\sqrt{4C/M}$
+\end{enumerate}
+\end{multicols}
+
+\item The Dulong--Petit high-$T$ molar heat capacity is:
+\begin{multicols}{4}
+\begin{enumerate}[label=(\alph*)]
+\item $3R$
+\item $R$
+\item $3N\kB T$
+\item $3N\kB/T$
+\end{enumerate}
+\end{multicols}
+
+\item The Drude conductivity can be recovered from the quantum picture because:
+\begin{center}
+\begin{tabular}{@{}p{0.45\textwidth}@{\qquad}p{0.45\textwidth}@{}}
+(a) the equilibrium part dominates &
+(b) only electrons near $\EF$ contribute, moving at $v_{\mathrm{F}}$ \\[6pt]
+(c) all electrons drift at $v_{\mathrm{th}}$ &
+(d) the Fermi surface vanishes at low $T$
+\end{tabular}
+\end{center}
+
+\end{enumerate}
+
+% =====================================================================
+\section*{Section B}
+\noindent\textit{[Answer any \textbf{three} from Questions 6--9. $3 \times 8 = 24$ marks.]}
+\vspace{4pt}
+
+\begin{enumerate}[leftmargin=*,itemsep=12pt,resume=questions]
+
+% ---- B-1 (Q6) ----
+\item \hfill\textbf{[2+3+3]}
+\begin{enumerate}[label=(\alph*),itemsep=4pt]
+    \item Define the reciprocal lattice vectors $\mathbf{b}_{1},\mathbf{b}_{2},\mathbf{b}_{3}$ through the condition $\mathbf{a}_{i}\cdot\mathbf{b}_{j}=2\pi\delta_{ij}$ and write their explicit cross-product expressions.
+    \item Show that the reciprocal lattice vector $\mathbf{G}_{hkl}$ is normal to the $(hkl)$ family of lattice planes, and derive the relation $d_{hkl}=2\pi/\lvert\mathbf{G}_{hkl}\rvert$.
+    \item Copper has an FCC structure with lattice parameter $a=3.61\,\text{\AA}$. Compute the interplanar spacing $d_{220}$. Using Bragg's law with X-ray wavelength $\lambda=1.54\,\text{\AA}$, calculate the glancing angle $\theta$ for first-order $(220)$ reflection.
+\end{enumerate}
+
+% ---- B-2 (Q7) ----
+\item \hfill\textbf{[2+3+3]}
+\begin{enumerate}[label=(\alph*),itemsep=4pt]
+    \item Define the structure factor $F_{hkl}$, explicitly writing its mathematical expression $F_{hkl}=\sum(expression)$ and defining all terms. Explain how $F_{hkl}$ determines whether a reflection $(hkl)$ is allowed or systematically absent based on $I_{hkl}\propto\lvert F_{hkl}\rvert^{2}$.
+    \item For a BCC lattice with basis $(0,0,0)$ and $(\tfrac12,\tfrac12,\tfrac12)$, derive the expression $F_{hkl}=f[1+e^{\pi i(h+k+l)}]$ and state the systematic extinction rule.
+    \item For an FCC lattice with basis $(0,0,0)$, $(\tfrac12,\tfrac12,0)$, $(\tfrac12,0,\tfrac12)$, and $(0,\tfrac12,\tfrac12)$, derive the extinction rule. Specify which of the following reflections are observed: $(100)$, $(110)$, $(111)$, $(200)$, $(210)$, and $(220)$.
+\end{enumerate}
+
+% ---- B-3 (Q8) ----
+\item \hfill\textbf{[4+1+3]}
+\begin{enumerate}[label=(\alph*),itemsep=4pt]
+    \item Derive the dispersion relation $\omega(k)=2\sqrt{C/M}\,\lvert\sin(ka/2)\rvert$ for a 1-D monoatomic lattice of identical atoms of mass $M$ separated by distance $a$, assuming harmonic nearest-neighbor interactions with spring constant $C$.
+    \item Identify the expressions for the speed of sound $v_{\mathrm{s}}$ and the cutoff frequency $\omega_{\max}$.
+    \item For a 1-D chain with $M=40\,\mathrm{amu}$, $a=3\,\text{\AA}$, and $C=50\,\mathrm{N\,m^{-1}}$, compute $\omega_{\max}$, $v_{\mathrm{s}}$, and the group velocity $v_{\mathrm{g}}$ at $k=0.3\pi/a$.
+\end{enumerate}
+
+% ---- B-4 (Q9) ----
+\item \hfill\textbf{[3+2+3]}
+\begin{enumerate}[label=(\alph*),itemsep=4pt]
+    \item Set up the equations of motion for a 1-D diatomic chain of masses $M$ and $m$ connected by identical springs with force constant $C$. Formulate the secular determinant and quote the resulting dispersion relation.
+    \item Show that at the edge of the first Brillouin zone, an energy gap $\Delta\omega=\sqrt{2C/m}-\sqrt{2C/M}$ opens up between the acoustic and optical branches.
+    \item Taking $M=40\,\mathrm{amu}$, $m=20\,\mathrm{amu}$, and $C=50\,\mathrm{N\,m^{-1}}$, compute the gap width $\Delta\omega$, the acoustic edge frequency $\omega_{-}(\pi/a)$, and the optical edge frequency $\omega_{+}(\pi/a)$.
+\end{enumerate}
+
+\end{enumerate}
+
+\newpage
+
+% =====================================================================
+\section*{Section C}
+\noindent\textit{[Question 10 is compulsory. Answer any \textbf{one} from Q11 or Q12. $2 \times 8 = 16$ marks.]}
+\vspace{4pt}
+
+\begin{enumerate}[leftmargin=*,itemsep=12pt,resume=questions]
+
+% ---- C-1 (Q10) ----
+\item \hfill\textbf{[4+1+3]}
+\begin{enumerate}[label=(\alph*),itemsep=4pt]
+    \item Derive the 3-D Debye density of vibrational states $g(\omega)=9N\omega^{2}/\omega_{\mathrm{D}}^{3}$, where the Debye cutoff frequency is defined as $\omega_{\mathrm{D}}=v_{\mathrm{s}}(6\pi^{2}N/V)^{1/3}$.
+    \item Starting from the internal energy, show that the low-temperature lattice heat capacity follows the $T^3$ law: $\Cv=\tfrac{12\pi^{4}}{5}N\kB(T/\TD)^{3}$.
+    \item Sodium has a Debye frequency $\nu_{\mathrm{D}}=3.3\times10^{12}\,\mathrm{Hz}$. Compute its Debye temperature $\TD=h\nu_{\mathrm{D}}/\kB$ and its molar specific heat at $T=10\,\mathrm{K}$.
+\end{enumerate}
+
+% ---- C-2 (Q11) ----
+\item \hfill\textbf{[4+2+2]}
+\begin{enumerate}[label=(\alph*),itemsep=4pt]
+    \item Using periodic boundary conditions for a free electron gas in 3 dimensions, derive the density of states $D(E)=\tfrac{V}{2\pi^{2}}(\tfrac{2m}{\hbar^{2}})^{3/2}\sqrt{E}$ and the Fermi energy $\EF=\tfrac{\hbar^{2}}{2m}(3\pi^{2}n)^{2/3}$.
+    \item Sodium (monovalent, BCC) has density $\rho=970\,\mathrm{kg\,m^{-3}}$ and atomic weight $A=23\,\mathrm{g\,mol^{-1}}$. Compute the conduction electron density $n$, the Fermi energy $\EF$ in eV, and the Fermi temperature $\TF$.
+    \item Calculate the average kinetic energy per electron at $T=0\,\mathrm{K}$ and estimate the fraction of conduction electrons excited within an energy range $\pm\kB T$ of $\EF$ at $T=300\,\mathrm{K}$.
+\end{enumerate}
+
+% ---- C-3 (Q12) ----
+\item \hfill\textbf{[4+2+2]}
+\begin{enumerate}[label=(\alph*),itemsep=4pt]
+    \item Using the steady-state Boltzmann transport equation within the relaxation-time approximation, derive the expression for the electrical conductivity $\sigma=ne^{2}\tau/m$.
+    \item Copper has a conduction electron density $n=8.5\times10^{28}\,\mathrm{m^{-3}}$ and relaxation time $\tau=2.5\times10^{-14}\,\mathrm{s}$. Compute its electrical conductivity $\sigma$ and the drift velocity $v_{\mathrm{d}}$ in an applied electric field $E=1\,\mathrm{V\,m^{-1}}$.
+    \item Compute the Fermi velocity $v_{\mathrm{F}}=\hbar(3\pi^{2}n)^{1/3}/m$ and the electronic mean free path $\ell=v_{\mathrm{F}}\tau$. Compare this mean free path with the interatomic spacing ($a \approx 3.61\,\text{\AA}$).
+\end{enumerate}
+
+\end{enumerate}
+
+% =====================================================================
+% ---------- SUMMARY TABLE: CO / DIFFICULTY / MARKS ----------
+% =====================================================================
+\newpage
+\section*{Question-wise CO Mapping and Mark Distribution}
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|*{12}{c|}}
+\hline
+\textbf{Question Nos.} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+\textbf{Course Outcomes} & CO1 & CO1 & CO2 & CO2 & CO3 & CO1 & CO1 & CO2 & CO2 & CO2 & CO3 & CO3 \\ \hline
+\textbf{Difficulty Level}$^{*}$ & 1 & 1 & 2 & 1 & 2 & 3 & 3 & 3 & 4 & 3 & 3 & 3 \\ \hline
+\textbf{Marks} & 1 & 1 & 1 & 1 & 1 & 8 & 8 & 8 & 8 & 8 & 8 & 8 \\ \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\noindent\footnotesize
+\textbf{Course Outcomes:}\\
+CO1: Differentiate between different lattice types and explain the concepts of reciprocal lattice and crystal diffraction.\\
+CO2: Distinguish different excitations in crystals and explain the specific heat.\\
+CO3: Apply the free electron model and interpret the properties of metals.\\
+CO4: Explain the concept of energy bands and use it to find electrical properties of materials (\emph{End-sem examination}).\\
+CO5: Explain electrical and magnetic properties of materials (\emph{End-sem examination}).
+
+\smallskip
+\noindent\footnotesize
+\textbf{Difficulty Level}$^{*}$:\\
+1 = Knowledge / Recall level;\\
+2 = Understand / Comprehend level;\\
+3 = Apply / Analyse level;\\
+4 = Evaluate / Create level.
+
+\smallskip
+\noindent\footnotesize
+\textbf{Notes:}\\
+(i)~Section A (Q1--Q5): Compulsory ($5 \times 1 = 5$ marks).\\
+(ii)~Section B (Q6--Q9): Attempt \emph{any three} ($3 \times 8 = 24$ marks).\\
+(iii)~Section C: Q10 is compulsory (8 marks); attempt \emph{any one} from Q11 or Q12 (8 marks) ($2 \times 8 = 16$ marks).\\
+(iv)~\textbf{Total Marks = 45} (Section A: 5 + Section B: 24 + Section C: 16).
+
+\vfill
+
+\begin{center}
+\rule{0.4\linewidth}{0.4pt}\\
+\textit{End of Question Paper. Best of luck!}
+\end{center}
+
+\end{document}

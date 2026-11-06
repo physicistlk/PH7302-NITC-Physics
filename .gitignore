@@ -1,0 +1,25 @@
+# Build and LaTeX artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.vrb
+
+# Credentials and keys
+*key*.txt
+*.key
+*.token
+*.env
+
+# Operating system / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/

@@ -1,0 +1,935 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{titlesec}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+\title{Module 1: Crystal Physics \& Reciprocal Lattice\\ \large Complete Worked Solutions \& TA Rubric}
+\author{PH7302E Condensed Matter Physics \\ Department of Physics \\ National Institute of Technology Calicut}
+\date{Academic Year 2026--27}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section*{Preface for Teaching Assistants}
+This document serves as a comprehensive solution rubric and grading guide for Module 1 of PH7302E Condensed Matter Physics. It contains:
+
+\begin{enumerate}
+    \item Complete solutions to all assignment problems
+    \item Detailed grading rubrics with point allocations
+    \item Common student errors and misconceptions
+    \item TA guidelines for consistent grading
+    \item Supplementary teaching materials
+\end{enumerate}
+
+\textbf{Total Points for Assignment:} 100
+
+\section{Grading Policy}
+\begin{itemize}
+    \item Each problem is worth the points indicated
+    \item Partial credit should be awarded for:
+    \begin{itemize}
+        \item Correct approach even if final answer is wrong
+        \item Correct setup of equations
+        \item Appropriate use of formulas
+        \item Clear explanation of reasoning
+    \end{itemize}
+    \item Deductions should be made for:
+    \begin{itemize}
+        \item Missing units
+        \item Incorrect significant figures
+        \item Lack of clarity in derivations
+        \item Missing steps in proofs
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\section{Assignment 1: Complete Solutions}
+
+\subsection*{Lecture 1 Problems}
+
+\subsubsection*{Problem 1: Packing Fraction of FCC (5 points)}
+\textbf{Solution:}
+In FCC, atoms touch along face diagonals. If $a$ is the lattice constant and $r$ is the atomic radius:
+\[4r = a\sqrt{2} \implies r = \frac{a\sqrt{2}}{4}\]
+
+Volume of atoms per unit cell:
+\begin{itemize}
+    \item 4 atoms per unit cell
+    \item Volume of one atom = $\frac{4}{3}\pi r^3$
+    \item Total atomic volume = $4 \times \frac{4}{3}\pi r^3 = \frac{16}{3}\pi r^3$
+\end{itemize}
+
+Packing fraction:
+\[\eta = \frac{4 \times \frac{4}{3}\pi r^3}{a^3} = \frac{16\pi r^3}{3a^3} = \frac{16\pi}{3} \left(\frac{a\sqrt{2}}{4}\right)^3 \frac{1}{a^3}\]
+\[\eta = \frac{16\pi}{3} \times \frac{2\sqrt{2}}{64} = \frac{32\sqrt{2}\pi}{192} = \frac{\pi}{3\sqrt{2}} \approx 0.7405\]
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct relationship between $r$ and $a$ ($4r = a\sqrt{2}$) & 2 \\
+Correct number of atoms per unit cell (4) & 1 \\
+Correct formula for packing fraction & 1 \\
+Correct final result ($\pi/3\sqrt{2} \approx 0.74$) & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Common Errors:}
+\begin{itemize}
+    \item Using incorrect relationship between $r$ and $a$
+    \item Forgetting to multiply by number of atoms
+    \item Using wrong number of atoms per unit cell
+\end{itemize}
+
+\subsubsection*{Problem 2: Atoms in Diamond Conventional Cell (3 points)}
+\textbf{Solution:}
+Diamond structure: FCC lattice with 2-atom basis at (0,0,0) and $(\frac{1}{4}, \frac{1}{4}, \frac{1}{4})$.
+
+FCC has 4 lattice points per conventional cell.
+Each lattice point has 2 atoms associated with it.
+Total atoms = $4 \times 2 = 8$ atoms per conventional cell.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Recognizes FCC with 4 lattice points per cell & 1 \\
+Recognizes 2-atom basis & 1 \\
+Correct final answer (8 atoms) & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 3: (110) Plane in BCC Lattice (4 points)}
+\textbf{Solution:}
+The (110) plane in a BCC lattice contains:
+\begin{itemize}
+    \item Corner atoms at (0,0,0), (1,0,0), (0,1,0), (1,1,0) in the plane
+    \item Body center atoms at ($\frac{1}{2}, \frac{1}{2}, 0$) in the plane
+    \item The plane cuts through the body-centered atom
+\end{itemize}
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct identification of plane intercepts & 2 \\
+Correct identification of atoms in plane & 1 \\
+Clear sketch with labeling & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 4: Miller Indices from Intercepts (4 points)}
+\textbf{Solution:}
+Intercepts: $2a, 3b, 6c$
+\begin{enumerate}
+    \item Intercepts in units of lattice constants: $(2, 3, 6)$
+    \item Take reciprocals: $(\frac{1}{2}, \frac{1}{3}, \frac{1}{6})$
+    \item Clear fractions (multiply by 6): $(3, 2, 1)$
+    \item Miller indices: $(321)$
+\end{enumerate}
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct intercepts in units of lattice constants & 1 \\
+Correct reciprocals & 1 \\
+Correct clearing of fractions & 1 \\
+Correct final Miller indices & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 5: Interplanar Spacing for (220) Planes in Copper (4 points)}
+\textbf{Solution:}
+For cubic lattice:
+\[d_{220} = \frac{a}{\sqrt{h^2 + k^2 + l^2}} = \frac{3.61}{\sqrt{2^2 + 2^2 + 0^2}} = \frac{3.61}{\sqrt{8}} = \frac{3.61}{2\sqrt{2}} = 1.28 \text{ \AA}\]
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct formula for cubic interplanar spacing & 1 \\
+Correct values for h, k, l & 1 \\
+Correct arithmetic & 1 \\
+Correct units & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 6: $(11\bar{2})$ Plane (4 points)}
+\textbf{Solution:}
+For the $(11\bar{2})$ plane:
+\begin{itemize}
+    \item Intercepts: $(\frac{1}{1}, \frac{1}{1}, \frac{1}{-2}) = (1, 1, -\frac{1}{2})$
+    \item The plane intersects the x-axis at $a$, y-axis at $b$, and z-axis at $-c/2$
+    \item The negative intercept means the plane cuts the negative z-axis
+\end{itemize}
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct intercepts from Miller indices & 2 \\
+Correct drawing with axes labeled & 1 \\
+Correct indication of negative intercept & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Lecture 2 Problems}
+
+\subsubsection*{Problem 7: Reciprocal Lattice of 2D Hexagonal Lattice (8 points)}
+\textbf{Solution:}
+Given: $\mathbf{a}_1 = a(1,0)$, $\mathbf{a}_2 = a(\frac{1}{2}, \frac{\sqrt{3}}{2})$
+
+For 2D, using the vector cross product with $\hat{z}$:
+\[V_{2D} = |\mathbf{a}_1 \times \mathbf{a}_2| = a^2 \frac{\sqrt{3}}{2}\]
+
+\[\mathbf{b}_1 = 2\pi \frac{\mathbf{a}_2 \times \hat{z}}{V_{2D}} = 2\pi \frac{a(\frac{1}{2}, \frac{\sqrt{3}}{2}, 0) \times (0,0,1)}{a^2\sqrt{3}/2}\]
+
+\[= 2\pi \frac{a(\frac{\sqrt{3}}{2}, -\frac{1}{2}, 0)}{a^2\sqrt{3}/2} = \frac{2\pi}{a}(1, -\frac{1}{\sqrt{3}})\]
+
+\[\mathbf{b}_2 = 2\pi \frac{\hat{z} \times \mathbf{a}_1}{V_{2D}} = 2\pi \frac{(0,0,1) \times a(1,0,0)}{a^2\sqrt{3}/2} = \frac{2\pi}{a}(0, \frac{2}{\sqrt{3}})\]
+
+The angle between $\mathbf{b}_1$ and $\mathbf{b}_2$ is 60°:
+\[\cos \theta = \frac{\mathbf{b}_1 \cdot \mathbf{b}_2}{|\mathbf{b}_1||\mathbf{b}_2|} = \frac{2\pi/a \times 0 + (-2\pi/(a\sqrt{3})) \times (4\pi/(a\sqrt{3}))}{(2\pi/a)(2\pi/a)(2/\sqrt{3})} = \frac{1}{2}\]
+Therefore $\theta = 60^\circ$, confirming hexagonal symmetry.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct 2D reciprocal lattice definition & 2 \\
+Correct calculation of $V_{2D}$ & 1 \\
+Correct calculation of $\mathbf{b}_1$ & 1.5 \\
+Correct calculation of $\mathbf{b}_2$ & 1.5 \\
+Correct angle calculation & 1 \\
+Conclusion: reciprocal lattice is hexagonal & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 8: Reciprocal of BCC is FCC (8 points)}
+\textbf{Solution:}
+Given BCC direct primitive vectors:
+\[\mathbf{a}_1 = \frac{a}{2}(-\hat{x} + \hat{y} + \hat{z}), \quad \mathbf{a}_2 = \frac{a}{2}(\hat{x} - \hat{y} + \hat{z}), \quad \mathbf{a}_3 = \frac{a}{2}(\hat{x} + \hat{y} - \hat{z})\]
+
+\begin{align*}
+\mathbf{a}_2 \times \mathbf{a}_3 &= \frac{a^2}{4}
+\begin{vmatrix}
+\hat{x} & \hat{y} & \hat{z} \\
+1 & -1 & 1 \\
+1 & 1 & -1
+\end{vmatrix} \\
+&= \frac{a^2}{4}[\hat{x}((-1)(-1) - (1)(1)) - \hat{y}((1)(-1) - (1)(1)) + \hat{z}((1)(1) - (-1)(1))] \\
+&= \frac{a^2}{4}[\hat{x}(1-1) - \hat{y}(-1-1) + \hat{z}(1+1)] \\
+&= \frac{a^2}{4}[0\hat{x} + 2\hat{y} + 2\hat{z}] = \frac{a^2}{2}(\hat{y} + \hat{z})
+\end{align*}
+
+$V = \mathbf{a}_1 \cdot (\mathbf{a}_2 \times \mathbf{a}_3) = \frac{a}{2}(-\hat{x} + \hat{y} + \hat{z}) \cdot \frac{a^2}{2}(\hat{y} + \hat{z}) = \frac{a^3}{4}(1+1) = \frac{a^3}{2}$
+
+\[\mathbf{b}_1 = 2\pi \frac{\mathbf{a}_2 \times \mathbf{a}_3}{V} = 2\pi \frac{a^2(\hat{y} + \hat{z})/2}{a^3/2} = \frac{2\pi}{a}(\hat{y} + \hat{z})\]
+
+Similarly:
+\[\mathbf{b}_2 = \frac{2\pi}{a}(\hat{x} + \hat{z}), \quad \mathbf{b}_3 = \frac{2\pi}{a}(\hat{x} + \hat{y})\]
+
+These are FCC primitive vectors with lattice constant $4\pi/a$, proving the reciprocal of BCC is FCC.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct BCC primitive vectors & 1 \\
+Correct calculation of cross products & 2 \\
+Correct calculation of volume $V$ & 1 \\
+Correct calculation of $\mathbf{b}_1, \mathbf{b}_2, \mathbf{b}_3$ & 2 \\
+Recognition of FCC structure & 1 \\
+Correct lattice constant ($4\pi/a$) & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 9: $\mathbf{G}_{hkl}$ Perpendicular to $(hkl)$ Plane (6 points)}
+\textbf{Solution:}
+Given: $\mathbf{G}_{hkl} = h\mathbf{b}_1 + k\mathbf{b}_2 + l\mathbf{b}_3$
+
+The $(hkl)$ plane contains vectors such as $\mathbf{a}_1/h - \mathbf{a}_2/k$ (both endpoints lie in the plane).
+
+\begin{align*}
+\mathbf{G}_{hkl} \cdot (\mathbf{a}_1/h - \mathbf{a}_2/k) &= (h\mathbf{b}_1 + k\mathbf{b}_2 + l\mathbf{b}_3) \cdot (\mathbf{a}_1/h - \mathbf{a}_2/k) \\
+&= h\mathbf{b}_1 \cdot \mathbf{a}_1/h - h\mathbf{b}_1 \cdot \mathbf{a}_2/k + k\mathbf{b}_2 \cdot \mathbf{a}_1/h - k\mathbf{b}_2 \cdot \mathbf{a}_2/k \\
+&+ l\mathbf{b}_3 \cdot \mathbf{a}_1/h - l\mathbf{b}_3 \cdot \mathbf{a}_2/k
+\end{align*}
+
+Using $\mathbf{a}_i \cdot \mathbf{b}_j = 2\pi \delta_{ij}$:
+\[= 2\pi - 0 + 0 - 2\pi + 0 - 0 = 0\]
+
+Therefore $\mathbf{G}_{hkl}$ is perpendicular to the $(hkl)$ plane.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct expression for $\mathbf{G}_{hkl}$ & 1 \\
+Correct identification of vectors in the plane & 1.5 \\
+Correct application of orthogonality relation & 1.5 \\
+Correct final conclusion ($\mathbf{G} \perp$ plane) & 2 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 10: Bragg Angle for NaCl (200) (5 points)}
+\textbf{Solution:}
+For cubic: $d_{200} = \frac{a}{\sqrt{2^2 + 0^2 + 0^2}} = \frac{5.64}{2} = 2.82 \text{ \AA}$
+
+Using Bragg's law: $2d\sin\theta = n\lambda$
+For first order ($n=1$):
+\[\sin\theta = \frac{\lambda}{2d} = \frac{1.54}{2 \times 2.82} = \frac{1.54}{5.64} = 0.2730\]
+
+\[\theta = \sin^{-1}(0.2730) = 15.84^\circ\]
+\[2\theta = 31.68^\circ\]
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct $d_{200}$ calculation & 1.5 \\
+Correct application of Bragg's law & 1.5 \\
+Correct arithmetic & 1 \\
+Correct final angles with units & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 11: Structure Factor of Diamond (6 points)}
+\textbf{Solution:}
+Diamond structure: FCC basis with second atom at $(\frac{1}{4}, \frac{1}{4}, \frac{1}{4})$
+
+Structure factor:
+\[F_{hkl} = f_{Si}[1 + e^{2\pi i(h/4 + k/4 + l/4)}] \times F_{FCC}\]
+
+where $F_{FCC} = 1 + e^{\pi i(k+l)} + e^{\pi i(h+l)} + e^{\pi i(h+k)}$
+
+$F_{FCC}$ is zero when $h,k,l$ are mixed.
+
+When $h,k,l$ are all even or all odd:
+\[F_{hkl} = f_{Si}[1 + e^{2\pi i(h+k+l)/4}]F_{FCC}\]
+
+For $h + k + l = 4n + 2$:
+\[e^{2\pi i(4n+2)/4} = e^{\pi i(2n+1)} = -1\]
+
+Therefore $1 + e^{2\pi i(h+k+l)/4} = 1 - 1 = 0$
+
+Hence $F_{hkl} = 0$ when $h + k + l = 4n + 2$.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct diamond structure basis & 1 \\
+Correct expression for $F_{hkl}$ & 1.5 \\
+Correct $F_{FCC}$ expression & 1 \\
+Correct analysis of $F_{FCC}$ zeros & 0.5 \\
+Correct analysis of second atom contribution & 1 \\
+Correct final condition ($h+k+l = 4n+2$) & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 12: (100) Absence in BCC (4 points)}
+\textbf{Solution:}
+For BCC: basis atoms at (0,0,0) and $(\frac{1}{2}, \frac{1}{2}, \frac{1}{2})$
+
+Structure factor:
+\[F_{100} = f[1 + e^{\pi i(1+0+0)}] = f[1 + e^{\pi i}] = f[1 - 1] = 0\]
+
+The (100) reflection is absent because the waves scattered from the corner atoms and the body center atom are out of phase by $\pi$, causing destructive interference.
+
+For SC with one atom basis at (0,0,0):
+\[F_{100} = f \neq 0\]
+
+Thus the (100) reflection is present in SC but absent in BCC.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct BCC structure factor expression & 1.5 \\
+Correct evaluation of $F_{100} = 0$ & 1 \\
+Correct SC structure factor evaluation & 0.5 \\
+Physical explanation & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Lecture 3 Problems}
+
+\subsubsection*{Problem 13: Powder Pattern Indexing for Iron (6 points)}
+\textbf{Solution:}
+For BCC, allowed reflections require $h+k+l$ even.
+
+Using $\sin^2\theta = \frac{\lambda^2}{4a^2}(h^2 + k^2 + l^2)$
+
+For BCC, the first allowed reflections:
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$(hkl)$ & $h^2+k^2+l^2$ & $\sin^2\theta$ \\
+\hline
+(110) & 2 & $\frac{\lambda^2}{4a^2} \times 2$ \\
+(200) & 4 & $\frac{\lambda^2}{4a^2} \times 4$ \\
+(211) & 6 & $\frac{\lambda^2}{4a^2} \times 6$ \\
+(220) & 8 & $\frac{\lambda^2}{4a^2} \times 8$ \\
+(310) & 10 & $\frac{\lambda^2}{4a^2} \times 10$ \\
+(222) & 12 & $\frac{\lambda^2}{4a^2} \times 12$ \\
+\hline
+\end{tabular}
+\end{center}
+
+First five lines: (110), (200), (211), (220), (310)
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct BCC selection rule ($h+k+l$ even) & 1 \\
+Correct calculation of $h^2+k^2+l^2$ for each reflection & 2 \\
+Correct order of reflections & 2 \\
+Correct identification of first five lines & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 14: Why Powder Method Works (4 points)}
+\textbf{Solution:}
+The powder method works because:
+\begin{enumerate}
+    \item The powder contains crystallites in all possible orientations
+    \item For any family of planes $(hkl)$, there will always be some crystallites oriented at the correct Bragg angle $\theta$
+    \item Each set of planes produces a cone of diffracted radiation
+    \item The random orientation ensures that all allowed reflections appear in the pattern
+\end{enumerate}
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Random orientation of crystallites & 1 \\
+Some crystallites always satisfy Bragg's law & 1 \\
+Cone formation explanation & 1 \\
+Complete coverage of all reflections & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 15: Multiplicity Factor for {110} (4 points)}
+\textbf{Solution:}
+For {110} planes in cubic crystals, the equivalent planes are obtained by permutations and sign changes of the indices.
+
+Number of permutations of (1,1,0) with two different indices = $\frac{3!}{2!} = 3$
+
+For each permutation, sign changes:
+\begin{itemize}
+    \item For indices with no zeros: $2^3$ sign combinations possible
+    \item But $(hkl)$ and $(\bar{h}\bar{k}\bar{l})$ are the same plane, so divide by 2
+\end{itemize}
+
+Multiplicity = $3 \times 2^2 = 12$ (since the zero index has only 1 sign)
+
+Alternative: {110} has 12 equivalent planes.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct number of permutations & 1.5 \\
+Correct treatment of sign changes & 1.5 \\
+Correct final multiplicity (12) & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 16: 5-fold Rotation Incompatibility (5 points)}
+\textbf{Solution:}
+Consider a lattice row with spacing $a$. A $C_n$ rotation by angle $2\pi/n$ maps lattice points to lattice points.
+
+After rotation, the projection of the rotated vector onto the original row must be an integer multiple of $a$:
+\[a\cos(2\pi/n) = ma \implies \cos(2\pi/n) = m\]
+
+where $m$ is an integer.
+
+For $n=5$: $\cos(72^\circ) = 0.3090$, not an integer.
+
+Therefore 5-fold rotation is incompatible with translational symmetry.
+
+The only possible values are:
+\begin{itemize}
+    \item $n=1$: $\cos(360^\circ) = 1$
+    \item $n=2$: $\cos(180^\circ) = -1$
+    \item $n=3$: $\cos(120^\circ) = -1/2$
+    \item $n=4$: $\cos(90^\circ) = 0$
+    \item $n=6$: $\cos(60^\circ) = 1/2$
+\end{itemize}
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct setup with lattice spacing $a$ & 1 \\
+Correct condition $\cos(2\pi/n)$ must be integer & 1.5 \\
+Correct evaluation for $n=5$ & 1 \\
+Correct listing of allowed values & 1.5 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 17: Point Group of Cube (3 points)}
+\textbf{Solution:}
+A cube has point group $O_h$ (Schoenflies notation) or $m\overline{3}m$ (International notation).
+
+Operations: 48 total
+\begin{itemize}
+    \item 24 proper rotations (including identity)
+    \item 24 improper rotations (including inversion)
+\end{itemize}
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct Schoenflies notation ($O_h$) & 1 \\
+Correct International notation ($m\overline{3}m$) & 1 \\
+Correct number of operations (48) & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 18: Space Groups in 2D (2 points)}
+\textbf{Solution:}
+There are 17 space groups in 2D.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct answer (17) & 2 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Lecture 4 Problems}
+
+\subsubsection*{Problem 19: Copper Properties (9 points)}
+\textbf{Solution:}
+(a) In FCC, atoms touch along face diagonal: $4r = \sqrt{2}a$
+\[r = \frac{\sqrt{2}a}{4} = \frac{\sqrt{2} \times 3.61}{4} = 1.28 \text{ \AA}\]
+
+(b) Density:
+\[\rho = \frac{4M}{N_A a^3}\]
+\[= \frac{4 \times 63.55 \text{ g/mol}}{6.022 \times 10^{23} \text{ mol}^{-1} \times (3.61 \times 10^{-8} \text{ cm})^3}\]
+\[= \frac{254.2}{6.022 \times 10^{23} \times 4.70 \times 10^{-23}} = \frac{254.2}{28.3} = 8.96 \text{ g/cm}^3\]
+
+(c) $d_{111} = \frac{a}{\sqrt{3}} = \frac{3.61}{\sqrt{3}} = 2.08 \text{ \AA}$
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+(a) Correct relationship and calculation of $r$ & 3 \\
+(b) Correct formula with correct values & 2 \\
+(b) Correct arithmetic and units & 1 \\
+(c) Correct formula and calculation & 2 \\
+(c) Correct units & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 20: BCC Diffraction (6 points)}
+\textbf{Solution:}
+Given: $2\theta = 30^\circ$, $\lambda = 1.54$ \AA, (110) planes
+
+$\theta = 15^\circ$
+
+Bragg's law: $2d_{110}\sin\theta = \lambda$
+\[d_{110} = \frac{\lambda}{2\sin\theta} = \frac{1.54}{2\sin(15^\circ)} = \frac{1.54}{2 \times 0.2588} = \frac{1.54}{0.5176} = 2.98 \text{ \AA}\]
+
+For cubic: $d_{110} = \frac{a}{\sqrt{1^2 + 1^2 + 0^2}} = \frac{a}{\sqrt{2}}$
+
+Therefore: $a = d_{110}\sqrt{2} = 2.98 \times 1.414 = 4.21 \text{ \AA}$
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct Bragg's law application & 2 \\
+Correct calculation of $d_{110}$ & 2 \\
+Correct relationship between $a$ and $d_{110}$ & 1 \\
+Correct final value with units & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 21: 2D Hexagonal Lattice (6 points)}
+\textbf{Solution:}
+Given: $\mathbf{a}_1 = a(1,0)$, $\mathbf{a}_2 = a(\frac{1}{2}, \frac{\sqrt{3}}{2})$
+
+The reciprocal lattice vectors have already been derived in Problem 7:
+\[\mathbf{b}_1 = \frac{2\pi}{a}(1, -\frac{1}{\sqrt{3}}), \quad \mathbf{b}_2 = \frac{2\pi}{a}(0, \frac{2}{\sqrt{3}})\]
+
+Lengths:
+\[|\mathbf{b}_1| = \frac{2\pi}{a}\sqrt{1 + \frac{1}{3}} = \frac{2\pi}{a}\frac{2}{\sqrt{3}}\]
+\[|\mathbf{b}_2| = \frac{2\pi}{a}\frac{2}{\sqrt{3}}\]
+
+The angle between $\mathbf{b}_1$ and $\mathbf{b}_2$:
+\[\cos\theta = \frac{\mathbf{b}_1 \cdot \mathbf{b}_2}{|\mathbf{b}_1||\mathbf{b}_2|} = \frac{(\frac{2\pi}{a})(-\frac{1}{\sqrt{3}}) \times (\frac{2\pi}{a})(\frac{2}{\sqrt{3}})}{(\frac{2\pi}{a}\frac{2}{\sqrt{3}})^2} = \frac{1}{2}\]
+
+Therefore $\theta = 60^\circ$, confirming hexagonal symmetry.
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct $\mathbf{b}_1$ and $\mathbf{b}_2$ & 2 \\
+Correct lengths calculation & 1 \\
+Correct angle calculation & 2 \\
+Conclusion: reciprocal lattice is hexagonal & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 22: Sodium BCC (6 points)}
+\textbf{Solution:}
+Given: $2\theta = 29.8^\circ$, $\lambda = 1.54$ \AA
+
+$\theta = 14.9^\circ$
+
+Bragg's law: $2d\sin\theta = \lambda$
+\[d = \frac{\lambda}{2\sin\theta} = \frac{1.54}{2\sin(14.9^\circ)} = \frac{1.54}{2 \times 0.2571} = \frac{1.54}{0.5142} = 2.99 \text{ \AA}\]
+
+For BCC, first reflection is from (110) planes.
+\[d_{110} = \frac{a}{\sqrt{2}}\]
+
+Therefore: $a = d_{110}\sqrt{2} = 2.99 \times 1.414 = 4.23 \text{ \AA}$
+
+The reflecting planes are (110).
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct Bragg's law application & 2 \\
+Correct calculation of $d$ & 1.5 \\
+Correct identification of BCC first reflection & 1 \\
+Correct $a$ calculation & 1 \\
+Correct identification of planes & 0.5 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 23: Zinc Blende Structure Factor (7 points)}
+\textbf{Solution:}
+Zinc blende: FCC lattice with basis of two different atoms at (0,0,0) and $(\frac{1}{4}, \frac{1}{4}, \frac{1}{4})$.
+
+Structure factor:
+\[F_{hkl} = f_{Zn}F_{FCC} + f_S e^{2\pi i(h+k+l)/4}F_{FCC}\]
+
+where $F_{FCC} = 1 + e^{\pi i(k+l)} + e^{\pi i(h+l)} + e^{\pi i(h+k)}$
+
+\[F_{hkl} = F_{FCC}[f_{Zn} + f_S e^{2\pi i(h+k+l)/4}]\]
+
+Systematic absences:
+1. When $h,k,l$ are mixed (FCC structure factor zero): $F_{hkl} = 0$
+2. When $h,k,l$ are all even or all odd:
+   \[F_{hkl} = F_{FCC}[f_{Zn} + f_S e^{2\pi i(h+k+l)/4}]\]
+   Additional absences occur when $f_{Zn} + f_S e^{2\pi i(h+k+l)/4} = 0$
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct zinc blende basis & 1 \\
+Correct $F_{FCC}$ expression & 1.5 \\
+Correct combined structure factor expression & 2 \\
+Correct mixed indices condition & 1 \\
+Correct additional absence condition & 1.5 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Problem 24: Neumann's Principle Application (5 points)}
+\textbf{Solution:}
+Neumann's principle states that the symmetry elements of any physical property must include the symmetry elements of the point group of the crystal.
+
+For a cubic crystal with inversion symmetry (e.g., NaCl):
+\begin{itemize}
+    \item Inversion symmetry requires any physical property to be invariant under $\mathbf{r} \rightarrow -\mathbf{r}$
+    \item Piezoelectricity requires a change in polarization under strain: $P_i = d_{ijk}\sigma_{jk}$
+    \item Under inversion, $P \rightarrow -P$ and $\sigma \rightarrow \sigma$ (stress is a polar tensor)
+    \item Therefore $d_{ijk} = -d_{ijk} \implies d_{ijk} = 0$
+\end{itemize}
+
+For zinc blende (cubic but no inversion center):
+\begin{itemize}
+    \item The symmetry operations do not include inversion
+    \item Therefore $d_{ijk}$ can be non-zero
+    \item Zinc blende is indeed piezoelectric
+\end{itemize}
+
+\textbf{Grading Rubric:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|c|}
+\hline
+\textbf{Criterion} & \textbf{Points} \\
+\hline
+Correct statement of Neumann's principle & 1 \\
+Correct analysis of inversion symmetry & 1.5 \\
+Correct analysis of piezoelectric tensor & 1.5 \\
+Correct conclusion for zinc blende & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Total Points Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Problem} & \textbf{Topic} & \textbf{Points} \\
+\hline
+1 & FCC Packing Fraction & 5 \\
+2 & Diamond Atoms & 3 \\
+3 & (110) Plane in BCC & 4 \\
+4 & Miller Indices & 4 \\
+5 & Interplanar Spacing & 4 \\
+6 & $(11\bar{2})$ Plane & 4 \\
+7 & 2D Hexagonal Reciprocal & 8 \\
+8 & BCC $\leftrightarrow$ FCC & 8 \\
+9 & $\mathbf{G} \perp$ Plane & 6 \\
+10 & Bragg Angle & 5 \\
+11 & Diamond Structure Factor & 6 \\
+12 & (100) Absence & 4 \\
+13 & Powder Pattern Indexing & 6 \\
+14 & Powder Method Explanation & 4 \\
+15 & Multiplicity Factor & 4 \\
+16 & 5-fold Rotation & 5 \\
+17 & Cube Point Group & 3 \\
+18 & 2D Space Groups & 2 \\
+19 & Copper Properties & 9 \\
+20 & BCC Diffraction & 6 \\
+21 & 2D Hexagonal (Repeated) & 6 \\
+22 & Sodium BCC & 6 \\
+23 & Zinc Blende Structure & 7 \\
+24 & Neumann's Principle & 5 \\
+\hline
+\multicolumn{2}{|c|}{\textbf{Total}} & \textbf{124} \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{TA Grading Guidelines}
+
+\subsection{General Principles}
+\begin{enumerate}
+    \item \textbf{Consistency:} Apply the same standards to all student submissions.
+    \item \textbf{Partial Credit:} Award partial credit for correct intermediate steps.
+    \item \textbf{Units:} Deduct 0.5 points for missing or incorrect units.
+    \item \textbf{Significant Figures:} Deduct 0.5 points for significant figure errors.
+    \item \textbf{Clarity:} Deduct up to 1 point for unclear or disorganized solutions.
+\end{enumerate}
+
+\subsection{Common Mistakes by Topic}
+
+\subsubsection{Crystal Structures}
+\begin{itemize}
+    \item Mixing up FCC and BCC coordination numbers
+    \item Incorrect number of atoms per unit cell
+    \item Wrong packing fraction formulas
+\end{itemize}
+
+\subsubsection{Miller Indices}
+\begin{itemize}
+    \item Forgetting to take reciprocals
+    \item Not clearing fractions properly
+    \item Confusing families ($\{hkl\}$) with specific planes $(hkl)$
+\end{itemize}
+
+\subsubsection{Reciprocal Lattice}
+\begin{itemize}
+    \item Incorrect application of $\mathbf{a}_i \cdot \mathbf{b}_j = 2\pi\delta_{ij}$
+    \item Wrong cross product calculations
+    \item Forgetting the $2\pi$ factor
+\end{itemize}
+
+\subsubsection{Diffraction}
+\begin{itemize}
+    \item Confusing Bragg angle $\theta$ with $2\theta$
+    \item Incorrect structure factor calculations
+    \item Missing systematic absence conditions
+\end{itemize}
+
+\subsection{Feedback Template}
+For efficient grading, use the following template for feedback:
+
+\begin{verbatim}
+Problem X:
+- Approach: [Excellent/Good/Needs Improvement]
+- Calculation: [Correct/Minor errors/Major errors]
+- Units: [Correct/Incorrect]
+- Score: [X/Y points]
+
+Comments: [Specific feedback]
+\end{verbatim}
+
+\section{Supplementary Teaching Materials}
+
+\subsection{Key Formulas Quick Reference}
+\begin{align*}
+\text{Lattice: } & \mathbf{R} = n_1\mathbf{a}_1 + n_2\mathbf{a}_2 + n_3\mathbf{a}_3 \\
+\text{Reciprocal: } & \mathbf{G} = h\mathbf{b}_1 + k\mathbf{b}_2 + l\mathbf{b}_3 \\
+\text{Orthogonality: } & \mathbf{a}_i \cdot \mathbf{b}_j = 2\pi\delta_{ij} \\
+\text{Bragg's Law: } & 2d\sin\theta = n\lambda \\
+\text{Interplanar: } & d_{hkl} = \frac{a}{\sqrt{h^2+k^2+l^2}} \\
+\text{Structure Factor: } & F_{hkl} = \sum_j f_j e^{2\pi i(hx_j+ky_j+lz_j)}
+\end{align*}
+
+\subsection{Structure Factor Rules Table}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Structure} & \textbf{Reflection Conditions} \\
+\hline
+SC & All $(hkl)$ \\
+BCC & $h+k+l$ even \\
+FCC & $h,k,l$ all even or all odd \\
+Diamond & $h,k,l$ all even or all odd, and $h+k+l$ not $4n+2$ \\
+NaCl & $h,k,l$ all even or all odd \\
+CsCl & All $(hkl)$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}

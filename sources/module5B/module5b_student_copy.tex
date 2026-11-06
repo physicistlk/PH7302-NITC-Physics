@@ -1,0 +1,1275 @@
+\documentclass[11pt,a4paper]{article}
+
+% =============================================================================
+%  MODULE 5B: DIELECTRICS, FERROELECTRICS & OPTICAL PROPERTIES --- STUDENT COPY
+%  PH7302: Condensed Matter Physics I  |  Department of Physics, NIT Calicut
+% =============================================================================
+
+% --- Page Geometry -----------------------------------------------------------
+\usepackage[a4paper, top=2.4cm, bottom=2.4cm, left=2.3cm, right=2.3cm,
+            headheight=14pt]{geometry}
+
+% --- Mathematics & Physics Packages ------------------------------------------
+\usepackage{amsmath, amssymb, amsfonts, bm, mathtools}
+
+% --- Tables, Lists & Typography ----------------------------------------------
+\usepackage{booktabs, longtable, array, tabularx}
+\renewcommand{\tabularxcolumn}[1]{p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{listings}
+
+% --- Graphics & Colour --------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{primary}{RGB}{20, 50, 100}     % deep blue
+\definecolor{secondary}{RGB}{140, 40, 30}   % brick red
+\definecolor{tealcol}{RGB}{17, 122, 101}
+\definecolor{orangecol}{RGB}{199, 124, 2}
+\definecolor{purplecol}{RGB}{106, 61, 154}
+
+% --- Native Vector Graphics ----------------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc, decorations.pathmorphing,
+                decorations.pathreplacing, patterns, positioning}
+
+% --- Boxed Environments for Student Learning ----------------------------------
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+% --- Running Headers & Footers ------------------------------------------------
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{primary}\textbf{PH7302: Condensed Matter Physics I}}
+\fancyhead[R]{\small\color{gray!75!black}Module 5B: Dielectrics \& Optical Properties (Student Copy)}
+\fancyfoot[C]{\small\thepage\ \textcolor{gray!75!black}{of~\pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% --- Section Title Styling ----------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{primary}}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{primary!75!black}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\small\bfseries\color{black}}{\thesubsubsection}{1em}{}
+
+% --- Hyperlinks ----------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    citecolor=primary,
+    urlcolor=secondary,
+    pdfauthor={Department of Physics, National Institute of Technology Calicut},
+    pdftitle={Module 5B: Dielectrics, Ferroelectrics, and Optical Properties --- Student Copy},
+    pdfsubject={PH7302 Condensed Matter Physics I}
+}
+
+% --- Table of Contents Styling -----------------------------------------------
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{2.2pt}
+\setlength{\cftbeforesubsecskip}{0.6pt}
+\renewcommand{\cftsecfont}{\bfseries\color{primary}}
+\renewcommand{\cftsubsecfont}{\normalfont\color{black}}
+\renewcommand{\cftsecpagefont}{\bfseries\color{primary}}
+
+% =============================================================================
+%  STUDENT LEARNING BOXES
+% =============================================================================
+\newtcolorbox{checkpointbox}[1]{%
+    colback=blue!3!white, colframe=primary,
+    fonttitle=\bfseries\small, title={Conceptual Checkpoint: #1},
+    arc=2mm, boxrule=0.9pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{takeawaybox}[1]{%
+    colback=teal!4!white, colframe=tealcol,
+    fonttitle=\bfseries\small, title={Key Study Takeaway: #1},
+    arc=2mm, boxrule=0.9pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{methodbox}[1]{%
+    colback=purple!4!white, colframe=purplecol,
+    fonttitle=\bfseries\small, title={Analytical Derivation Strategy: #1},
+    arc=2mm, boxrule=0.9pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{pitfallbox}[1]{%
+    colback=orange!5!white, colframe=orangecol,
+    fonttitle=\bfseries\small, title={Common Misconception \& Pitfall: #1},
+    arc=2mm, boxrule=0.9pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{examplebox}[2]{%
+    colback=gray!4!white, colframe=primary!70!black,
+    fonttitle=\bfseries\small, title={Problem #1},
+    label={#2},
+    arc=2mm, boxrule=1.0pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{solbox}[1]{%
+    colback=teal!3!white, colframe=tealcol!80!black,
+    fonttitle=\bfseries\small, title={Model Solution \& Step-by-Step Analysis: #1},
+    arc=2mm, boxrule=0.9pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{keyeqbox}[1]{%
+    colback=primary!3!white, colframe=primary!85!black,
+    fonttitle=\bfseries\small, title={Core Physical Result: #1},
+    arc=2mm, boxrule=0.9pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{definitionbox}[1]{%
+    colback=gray!4!white, colframe=black!65,
+    fonttitle=\bfseries\small, title={Definition: #1},
+    arc=2mm, boxrule=0.9pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\newtcolorbox{sketchbox}[1]{%
+    colback=gray!3!white, colframe=gray!55!black,
+    fonttitle=\bfseries\small, title={Reading the Physical Diagram: #1},
+    arc=2mm, boxrule=0.8pt, breakable, enhanced,
+    before upper={\parindent0pt}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+% =============================================================================
+%  TITLE BLOCK & CURRICULUM CONTEXT
+% =============================================================================
+\begin{center}
+    {\LARGE \textbf{\color{primary}PH7302: Condensed Matter Physics I}}\\[6pt]
+    {\Large \textbf{Module 5B: Dielectrics, Ferroelectrics, and Optical Properties of Solids}}\\[4pt]
+    {\large \textbf{\color{secondary}Comprehensive Student Study Guide \& Reference Notes}}\\[6pt]
+    \small Department of Physics, National Institute of Technology Calicut
+\end{center}
+
+\vspace{0.1cm}
+\hrule
+\vspace{0.25cm}
+
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+    \textbf{Target Audience:} & M.Sc. Physics / Ph.D. Core Course \hfill \textbf{Course Code:} PH7302E \\
+    \textbf{Recommended Texts:} & C. Kittel, \textit{Introduction to Solid State Physics} (Ch. 14--16); N. W. Ashcroft \& N. D. Mermin, \textit{Solid State Physics}; NPTEL Advanced CMP Series. \\
+    \textbf{Module Scope:} & Macroscopic electrostatics in matter, local field corrections, Clausius--Mossotti relation, polarizability mechanisms, piezoelectricity, ferroelectricity and domain switching, soft mode theory, complex dielectric response, Lorentz oscillator model, Kramers--Kronig relations, excitons, and Reststrahlen polaritons. \\
+\end{tabularx}
+
+\vspace{0.25cm}
+\hrule
+\vspace{0.3cm}
+
+\begin{takeawaybox}{Curriculum Roadmap \& Core Themes}
+This document serves as the self-contained student companion for Module 5B. It is structured into two core theoretical pillars followed by a unified mathematical summary and comprehensive problem set:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Part I: Dielectric Media \& Electromechanical Coupling} --- Connecting macroscopic Maxwell fields $\mathbf{E}$ to atomic local fields $\mathbf{E}_{\text{loc}}$ via the Lorentz cavity method; deriving the Clausius--Mossotti relation; analyzing electronic, ionic, and orientational polarizabilities; and establishing the symmetry criteria for piezoelectricity.
+    \item \textbf{Part II: Ferroelectricity, Soft Modes \& Optical Response} --- Unraveling spontaneous polarization, perovskite crystal chemistry ($\text{BaTiO}_3$), domain thermodynamics and $P$--$E$ hysteresis; connecting structural phase transitions to lattice dynamics via the Lyddane--Sachs--Teller (LST) relation; and exploring optical dispersion, interband transitions, and Reststrahlen phonon-polaritons.
+    \item \textbf{Part III: Summary of Governing Equations} --- Complete master formula sheet and diagnostic tables comparing electronic vs. ionic materials.
+    \item \textbf{Part IV: Worked Examination Problems \& Conceptual Viva Questions} --- Fully worked numerical problems (P1--P7) with complete algebraic derivations and in-depth physical explanations for viva voce oral examinations.
+\end{enumerate}
+\end{takeawaybox}
+
+\vspace{0.2cm}
+\tableofcontents
+\newpage
+
+% =============================================================================
+%  PART I: DIELECTRIC PROPERTIES & PIEZOELECTRICITY
+% =============================================================================
+\section{Dielectric Properties of Insulators and Piezoelectricity}
+\label{sec:dielectrics}
+
+
+\textit{}
+
+\subsection{Macroscopic Electrostatics in Insulators}
+In vacuum, the fundamental electrostatic field is $\mathbf{E}_0$. In an insulating condensed matter system, an applied macroscopic field $\mathbf{E}$ induces bound microscopic charge displacements.
+
+\subsubsection{Polarization Vector and Electric Displacement}
+The electric polarization $\mathbf{P}$ is defined as the net electric dipole moment per unit volume:
+\begin{equation}
+    \mathbf{P} = \lim_{\Delta V \to 0} \frac{1}{\Delta V} \sum_{i \in \Delta V} \mathbf{p}_i = \sum_j N_j \langle \mathbf{p}_j \rangle
+\end{equation}
+where $N_j$ is the concentration of polarizable units of type $j$, and $\langle \mathbf{p}_j \rangle$ is their thermally averaged dipole moment.
+
+In Maxwell's macroscopic equations, the presence of bound charge density $\rho_b = -\nabla \cdot \mathbf{P}$ and free charge density $\rho_f$ is unified through the electric displacement field $\mathbf{D}$:
+\begin{equation}
+    \mathbf{D} = \epsilon_0 \mathbf{E} + \mathbf{P}
+\end{equation}
+For a linear, isotropic, and homogeneous (LIH) medium:
+\begin{align}
+    \mathbf{P} &= \epsilon_0 \chi_e \mathbf{E} \\
+    \mathbf{D} &= \epsilon_0 (1 + \chi_e) \mathbf{E} = \epsilon_0 \epsilon_r \mathbf{E} = \epsilon \mathbf{E}
+\end{align}
+where $\chi_e$ is the electric susceptibility and $\epsilon_r = 1 + \chi_e$ is the relative permittivity (dielectric constant). In anisotropic crystals, $\chi_e$ and $\epsilon_r$ are second-rank tensors: $D_i = \epsilon_0 \epsilon_{ij} E_j$.
+
+\subsubsection{The Dilute-Gas Baseline and Where It Breaks Down}
+If the polarisable entities are far apart --- a dilute gas --- the mutual dipole--dipole interaction is negligible, and each atom responds only to the macroscopic field:
+\begin{equation}
+    \mathbf{p} = \alpha \mathbf{E}
+\end{equation}
+With the SI convention used throughout these notes ($\alpha$ in units of $\mathrm{F\,m^2}$), the polarization and the susceptibility follow at once:
+\begin{equation}
+    \mathbf{P} = N\mathbf{p} = N\alpha\mathbf{E} \implies \chi_e = \frac{N\alpha}{\epsilon_0} \implies \epsilon_r = 1 + \frac{N\alpha}{\epsilon_0}
+\end{equation}
+In Gaussian CGS units the same statement reads $\chi_e = 4\pi N\alpha$ and $\epsilon_r = 1 + 4\pi N\alpha$, with $\alpha$ then measured in $\mathrm{cm^3}$.
+
+This elementary gas law is the baseline against which the whole of Lecture 1 is measured, and it is worth writing on the board first because everything that follows is a correction to it. In a condensed phase the law fails, not because the linear response $\mathbf{p} = \alpha\mathbf{E}$ breaks down, but because the field that acts on a given atom is no longer the macroscopic one: the polarised surroundings generate a \textbf{local field} $\mathbf{E}_{\text{loc}}$ that differs from $\mathbf{E}_{\text{macro}}$:
+\begin{equation}
+    \mathbf{E}_{\text{loc}} \neq \mathbf{E}_{\text{macro}}
+\end{equation}
+Recovering that correction is the task of the next two subsections.
+
+\subsection{The Local Electric Field at an Atomic Site}
+The field acting directly on an individual atom is \textbf{not} the macroscopic Maxwell field $\mathbf{E}$, because $\mathbf{E}$ represents an average over macroscopic volumes containing billions of atoms. The field acting at a specific site $\mathbf{r}_0$ is the \textbf{local field} $\mathbf{E}_{\text{loc}}$.
+
+\subsubsection{Lorentz Cavity Construction}
+Following H. A. Lorentz, we isolate the atom by drawing an imaginary sphere of radius $R$ (large compared to the lattice constant $a$, but small compared to macroscopic variations of $\mathbf{E}$) centered at the atomic position.
+
+The total local field is decomposed into four distinct contributions:
+\begin{equation}
+    \mathbf{E}_{\text{loc}} = \mathbf{E}_0 + \mathbf{E}_1 + \mathbf{E}_2 + \mathbf{E}_3
+\end{equation}
+\begin{enumerate}
+    \item $\mathbf{E}_0$: Electric field produced by external charges on electrodes.
+    \item $\mathbf{E}_1$: Depolarization field resulting from the polarization surface charge on the external boundary of the dielectric specimen ($\mathbf{E}_1 = -N_{\text{dep}} \mathbf{P} / \epsilon_0$).
+    \item $\mathbf{E}_2$: Surface charge field on the boundary of the spherical Lorentz cavity.
+    \item $\mathbf{E}_3$: Microscopic field produced by the individual discrete dipoles located \textit{inside} the Lorentz sphere.
+\end{enumerate}
+
+The macroscopic field already accounts for the external charges and external boundaries:
+\begin{equation}
+    \mathbf{E} = \mathbf{E}_0 + \mathbf{E}_1
+\end{equation}
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_lorentz_cavity.pdf}
+\caption{The Lorentz cavity method for computing the microscopic local electric field $\mathbf{E}_{\text{loc}}$.}
+\label{fig:lorentz_cavity}
+\end{figure}
+
+\subsubsection{Evaluation of the Cavity Field \texorpdfstring{$\mathbf{E}_2$}{E2}}
+The bound surface charge on the cavity wall is $dq = -P \cos\theta \, dA = -P \cos\theta (2\pi R^2 \sin\theta \, d\theta)$; the minus sign appears because the outward normal of the dielectric points \emph{into} the cavity, so the wall charge is negative on the $+P$ hemisphere. The field of such an element at the centre is directed along $-\hat{r}$ (towards the element, since $dq<0$ there), and its component along $\mathbf{P}$ is:
+\begin{equation}
+    dE_2 = -\frac{1}{4\pi\epsilon_0} \frac{dq \cos\theta}{R^2} = \frac{P}{2\epsilon_0} \cos^2\theta \sin\theta \, d\theta
+\end{equation}
+Integrating over $\theta$ from $0$ to $\pi$:
+\begin{equation}
+    E_2 = \frac{P}{2\epsilon_0} \int_0^\pi \cos^2\theta \sin\theta \, d\theta = \frac{P}{2\epsilon_0} \left[ -\frac{\cos^3\theta}{3} \right]_0^\pi = \frac{\mathbf{P}}{3\epsilon_0}
+\end{equation}
+The cavity field therefore \emph{reinforces} the polarization, and is directed along $\mathbf{P}$.
+
+\subsubsection{Internal Dipole Field \texorpdfstring{$\mathbf{E}_3$}{E3}}
+The field produced at the centre by a point dipole $\mathbf{p}_j$ sitting at $\mathbf{r}_j$ inside the cavity is
+\begin{equation}
+    \mathbf{E}_3 = \frac{1}{4\pi\epsilon_0}\sum_j \frac{3(\mathbf{p}_j \cdot \mathbf{r}_j)\mathbf{r}_j - r_j^2 \mathbf{p}_j}{r_j^5}
+\end{equation}
+For a lattice site with cubic symmetry (sc, bcc, fcc, or tetrahedral coordination) or isotropic random distributions, the second-rank susceptibility of the site is isotropic, so that
+\begin{equation}
+    \sum_j \frac{x_j^2}{r_j^5} = \sum_j \frac{y_j^2}{r_j^5} = \sum_j \frac{z_j^2}{r_j^5} = \frac{1}{3}\sum_j \frac{r_j^2}{r_j^5}, \qquad \sum_j \frac{x_jy_j}{r_j^5} = 0
+\end{equation}
+The bracketed sum then vanishes identically --- the cubic environment is an exact cancellation partner for the dipoles inside the cavity:
+\begin{equation}
+    \mathbf{E}_3 = 0
+\end{equation}
+\emph{This cancellation is exact only for cubic or isotropic environments.} In a non-cubic crystal $\mathbf{E}_3$ does not vanish, which is precisely why anisotropic permittivity has to be carried as a tensor $\epsilon_{ij}$, and why the scalar Clausius--Mossotti law derived below fails away from cubic symmetry.
+
+Therefore, the \textbf{Lorentz Local Field} in a cubic dielectric is:
+\begin{tcolorbox}[colback=blue!5!white,colframe=primary!70!black,title=Lorentz local field]
+\begin{equation}
+    \mathbf{E}_{\text{loc}} = \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0}\quad (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \mathbf{E}_{\text{loc}} = \mathbf{E} + \frac{4\pi}{3}\mathbf{P}\quad (\mathrm{Gaussian})
+\end{equation}
+\end{tcolorbox}
+
+\subsection{Depolarization Fields and the Dependence on Sample Geometry}
+The depolarization term $\mathbf{E}_1$ of the Lorentz construction is not a universal constant: it is fixed by the \emph{shape} of the specimen. A uniformly polarised body carries bound surface charge $\sigma_b = \mathbf{P}\cdot\hat{\mathbf{n}}$, and the field that this charge produces in the interior of the body is
+\begin{equation}
+    \mathbf{E}_{\text{dep},i} = -\frac{N_i P_i}{\epsilon_0}\quad (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \mathbf{E}_{\text{dep},i} = -4\pi N_i P_i \quad (\mathrm{Gaussian})
+\end{equation}
+where $N_i$ are the dimensionless depolarization factors of the specimen. They are constrained by the trace rule
+\begin{equation}
+    \sum_i N_i = 1 \quad (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \sum_i N_i = 4\pi \quad (\mathrm{Gaussian})
+\end{equation}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Geometry} & \textbf{Field direction} & \textbf{SI $N_i$} & \textbf{CGS $N_i$} \\
+\midrule
+Sphere & any axis & $1/3$ & $4\pi/3$ \\
+Thin plate / slab & normal to the face & $1$ & $4\pi$ \\
+Thin plate / slab & parallel to the face & $0$ & $0$ \\
+Long needle / cylinder & transverse to the axis & $1/2$ & $2\pi$ \\
+Long needle / cylinder & along the axis & $0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\caption{Depolarization factors for the canonical specimen geometries. The trace $\sum_i N_i$ equals 1 in SI and $4\pi$ in Gaussian units.}
+\label{tab:depolarization}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{figures/fig_depolarization_geometries.pdf}
+\caption{Depolarization fields of the canonical specimen geometries. The depolarizing field always opposes the polarization, and its strength is set by the shape of the sample rather than by the material.}
+\label{fig:depolarization_geometries}
+\end{figure}
+
+\paragraph{Why the geometry has to be quoted with the measurement:}
+For a thin slab with the field normal to the faces the depolarizing field is as large as the polarization itself ($N = 1$), whereas a long needle aligned with the field has no depolarizing field at all ($N = 0$). Since the local field entering the Clausius--Mossotti relation is $\mathbf{E}_{\text{loc}} = \mathbf{E} - N_i\mathbf{P}_i/\epsilon_0$, a dielectric constant quoted without its specimen geometry is an incomplete specification. This is the reason a slab measured between electrodes and a free crystal of the same material need not return the same $\epsilon_r$.
+
+\subsection{Microscopic Polarizability and Clausius--Mossotti}
+At the microscopic level, an atom experiences $\mathbf{E}_{\text{loc}}$, which induces an atomic dipole moment:
+\begin{equation}
+    \mathbf{p} = \alpha \mathbf{E}_{\text{loc}}
+\end{equation}
+where $\alpha$ is the atomic polarizability. For a substance with concentration $N$ atoms per unit volume:
+\begin{equation}
+    \mathbf{P} = N \mathbf{p} = N \alpha \mathbf{E}_{\text{loc}} = N \alpha \left( \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0} \right)
+\end{equation}
+
+Rearranging terms for $\mathbf{P}$:
+\begin{equation}
+    \mathbf{P} \left( 1 - \frac{N\alpha}{3\epsilon_0} \right) = N \alpha \mathbf{E} \implies \mathbf{P} = \frac{N\alpha}{1 - \frac{N\alpha}{3\epsilon_0}} \mathbf{E}
+\end{equation}
+Equating this with $\mathbf{P} = \epsilon_0 (\epsilon_r - 1) \mathbf{E}$, we obtain:
+\begin{equation}
+    \epsilon_0 (\epsilon_r - 1) = \frac{N\alpha}{1 - \frac{N\alpha}{3\epsilon_0}}
+\end{equation}
+Dividing both sides by $\epsilon_0 (\epsilon_r + 2)$ and simplifying yields the celebrated \textbf{Clausius-Mossotti relation}:
+\begin{equation}
+    \frac{\epsilon_r - 1}{\epsilon_r + 2} = \frac{N\alpha}{3\epsilon_0} = \frac{1}{3\epsilon_0} \sum_j N_j \alpha_j
+\end{equation}
+Expressing the dielectric constant explicitly:
+\begin{equation}
+    \epsilon_r = \frac{1 + \frac{2 N \alpha}{3\epsilon_0}}{1 - \frac{N\alpha}{3\epsilon_0}}
+\end{equation}
+
+\paragraph{Physical Consequence --- Polarization Catastrophe:}
+Notice that if $N\alpha / (3\epsilon_0) \to 1$, the denominator approaches zero, leading to $\epsilon_r \to \infty$. This implies that a finite spontaneous polarization $\mathbf{P}$ can exist even in the absence of an applied macroscopic field $\mathbf{E} = 0$. This instability is the classic electrostatic criterion for the onset of \textbf{ferroelectricity}.
+
+\paragraph{Sanity check --- the gas limit is recovered:}
+The Clausius--Mossotti relation must collapse to the dilute-gas baseline of Subsection 1.1 when the local field is negligible. Writing $x \equiv N\alpha/(3\epsilon_0)$, the exact result is
+\begin{equation}
+    \epsilon_r - 1 = \frac{3x}{1-x} = 3x + O(x^2)
+\end{equation}
+which is precisely the gas law $\epsilon_r = 1 + N\alpha/\epsilon_0$ to first order. The entire content of the local-field construction is therefore the higher-order terms.
+
+\begin{tcolorbox}[colback=green!8!white,colframe=green!45!black,title=Unit conventions (SI and Gaussian)]
+\begin{align}
+    \mathbf{D} &= \epsilon_0\mathbf{E} + \mathbf{P}, \quad \epsilon_r = 1+\chi_e
+    && (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \mathbf{D} = \mathbf{E} + 4\pi\mathbf{P}
+    && (\mathrm{Gaussian}) \\
+    \alpha_e &= 4\pi\epsilon_0 R^3
+    && (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \alpha_e = R^3
+    && (\mathrm{Gaussian}) \\
+    \mathbf{E}_{\text{loc}} &= \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0}
+    && (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \mathbf{E}_{\text{loc}} = \mathbf{E} + \frac{4\pi}{3}\mathbf{P}
+    && (\mathrm{Gaussian}) \\
+    \frac{\epsilon_r-1}{\epsilon_r+2} &= \frac{N\alpha}{3\epsilon_0}
+    && (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \frac{\epsilon_r-1}{\epsilon_r+2} = \frac{4\pi}{3}N\alpha
+    && (\mathrm{Gaussian})
+\end{align}
+\end{tcolorbox}
+
+\subsection{The Lorentz--Lorenz Relation and a Static-versus-Optical Diagnostic}
+At optical frequencies the ions are far too massive to follow the oscillating field, so only the electronic polarizability survives and the measured response is the optical one. For a non-magnetic medium Maxwell's relation gives
+\begin{equation}
+    \epsilon_r(\omega_{\text{opt}}) = n^2
+\end{equation}
+where $n$ is the refractive index. Substituting this into the Clausius--Mossotti relation with $\alpha \to \alpha_e$ produces the \textbf{Lorentz--Lorenz equation}:
+\begin{equation}
+    \frac{n^2 - 1}{n^2 + 2} = \frac{N\alpha_e}{3\epsilon_0}
+\end{equation}
+This is a genuinely useful experimental diagnostic, because it separates the two contributions that a static measurement mixes together: the optical measurement sees only $\alpha_e$, the static measurement sees $\alpha_e + \alpha_i + \alpha_d$.
+
+\paragraph{Case study: sodium chloride against diamond.}
+\begin{itemize}
+    \item \textbf{Sodium Chloride (NaCl)} --- an ionic crystal:
+    \begin{itemize}
+        \item static (low-frequency) relative permittivity $\epsilon_r(0) \approx 5.62$,
+        \item optical refractive index $n \approx 1.50$, so $n^2 \approx 2.25$,
+        \item since $\epsilon_r(0) \gg n^2$, a large share of the static response comes from the ionic polarizability $\alpha_i$ associated with the relative displacement of $\text{Na}^+$ and $\text{Cl}^-$ sublattices, which simply cannot follow an optical field.
+    \end{itemize}
+    \item \textbf{Diamond (C)} --- a covalent crystal:
+    \begin{itemize}
+        \item static $\epsilon_r(0) \approx 5.68$,
+        \item optical $n \approx 2.38$, so $n^2 \approx 5.66$,
+        \item here $\epsilon_r(0) \approx n^2$: the bonding carries no permanent ionic charge, so the polarization is exclusively electronic in both frequency regimes.
+    \end{itemize}
+\end{itemize}
+
+Quantitatively, insert both numbers into the Clausius--Mossotti factor $Y \equiv (\epsilon_r-1)/(\epsilon_r+2)$:
+\begin{equation}
+    Y_{\text{NaCl}}^{(n)} = \frac{1.50^2-1}{1.50^2+2} = 0.294 \qquad\text{but}\qquad Y_{\text{NaCl}}^{(\text{static})} = \frac{5.62-1}{5.62+2} = 0.606
+\end{equation}
+\begin{equation}
+    Y_{\text{diamond}}^{(n)} = \frac{2.38^2-1}{2.38^2+2} = 0.609 \qquad\text{and}\qquad Y_{\text{diamond}}^{(\text{static})} = \frac{5.68-1}{5.68+2} = 0.609
+\end{equation}
+The two numbers agree to three digits for diamond (purely electronic) and differ by a factor of two for NaCl. Equivalently, the ionic share of the static response of NaCl is
+\begin{equation}
+    1 - \frac{n^2}{\epsilon_r(0)} = 1 - \frac{2.25}{5.62} = 0.60,
+\end{equation}
+i.e. about $60\%$ of the static polarization of rock salt is ionic, against essentially $0\%$ for diamond (less than $1\%$).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_nacl_diamond.pdf}
+\caption{The static-versus-optical diagnostic. NaCl shows a large ionic excess between $\epsilon_r(0)$ and $n^2$; for diamond the two coincide, so the response is purely electronic.}
+\label{fig:nacl_diamond}
+\end{figure}
+
+\subsection{Microscopic Mechanisms of Polarization and Frequency Response}
+The total atomic polarizability $\alpha$ is a sum of three distinct physical contributions:
+\begin{equation}
+    \alpha_{\text{total}} = \alpha_e + \alpha_i + \alpha_d
+\end{equation}
+
+\begin{enumerate}
+    \item \textbf{Electronic Polarizability ($\alpha_e$):}
+    Displacement of the valence electron cloud relative to the positive nucleus.
+    \begin{itemize}
+        \item \textbf{Thomson atom.} Model an atom of atomic number $Z$ as a nucleus $+Ze$ embedded in a spherically symmetric, rigid electron cloud of charge $-Ze$ and radius $R$ with uniform density
+        \begin{equation}
+            \rho = \frac{-Ze}{\frac{4}{3}\pi R^3}
+        \end{equation}
+        In a local field $E_{\text{loc}}$ the nucleus is displaced by $+x$ relative to the geometric centre of the cloud. Constructing a spherical Gaussian surface of radius $x$ concentric with the displaced nucleus, the enclosed charge is
+        \begin{equation}
+            q_{\text{enc}} = (-Ze)\frac{x^3}{R^3}
+        \end{equation}
+        and Gauss's law gives $E_r(x)\cdot 4\pi x^2 = q_{\text{enc}}/\epsilon_0$. The resulting Coulomb force pulls the displaced nucleus back towards the centre of the cloud, with magnitude
+        \begin{equation}
+            F_{\text{res}} = (Ze)\,E_r(x) = \frac{(Ze)^2 x}{4\pi\epsilon_0 R^3}
+        \end{equation}
+        Balancing this against the driving force $(Ze)E_{\text{loc}}$ fixes the equilibrium displacement
+        \begin{equation}
+            x = \frac{4\pi\epsilon_0 R^3}{Ze}\,E_{\text{loc}}
+        \end{equation}
+        and hence the induced dipole moment $p = (Ze)x$ and the electronic polarizability
+        \begin{equation}
+            \alpha_e = \frac{p}{E_{\text{loc}}} = 4\pi\epsilon_0 R^3 \quad (\mathrm{SI}) \qquad \Longleftrightarrow \qquad \alpha_e = R^3 \quad (\mathrm{Gaussian})
+        \end{equation}
+        The electronic polarizability is therefore just the atomic volume up to the factor $4\pi\epsilon_0$: larger atoms polarise more.
+        \item If instead a single effective electron is displaced inside a $Z$-electron cloud, the same algebra with charge $-e$ gives $\alpha_e = 4\pi\epsilon_0 R_0^3/Z$. The electronic response is temperature-independent and survives up to ultraviolet frequencies ($\omega \sim 10^{15}$--$10^{16}\,\text{rad s}^{-1}$).
+    \end{itemize}
+
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig_thomson_atom.pdf}
+    \caption{The Thomson atom. Displacing the nucleus against the restoring force of its own electron cloud is the origin of the electronic polarizability $\alpha_e = 4\pi\epsilon_0 R^3$.}
+    \label{fig:thomson_atom}
+    \end{figure}
+
+    \item \textbf{Ionic (Atomic) Polarizability ($\alpha_i$):}
+    Relative displacement of positive and negative sublattices in ionic crystals (e.g., $\text{Na}^+$ and $\text{Cl}^-$).
+    \begin{itemize}
+        \item For ions with reduced mass $\mu$ and optical vibration frequency $\omega_0$:
+        \begin{equation}
+            \alpha_i = \frac{q^2}{\mu \omega_0^2}
+        \end{equation}
+        \item Responds in the infrared regime ($\omega \sim 10^{12}$--$10^{13}\,\text{rad s}^{-1}$).
+    \end{itemize}
+
+    \item \textbf{Dipolar (Orientational) Polarizability ($\alpha_d$):}
+    Thermal reorientation of permanent electric dipoles $\mathbf{p}_0$ (e.g., $\text{H}_2\text{O}$, polar molecules).
+    \begin{itemize}
+        \item In an electric field $\mathbf{E}$, the potential energy is $U = -\mathbf{p}_0 \cdot \mathbf{E} = -p_0 E \cos\theta$.
+        \item By Boltzmann statistics, the average dipole moment along $\mathbf{E}$ is $\langle p_z \rangle = p_0 L(x)$ where $L(x) = \coth x - \frac{1}{x}$ is the Langevin function ($x = p_0 E / k_B T$).
+        \item In the weak-field limit ($p_0 E \ll k_B T$):
+        \begin{equation}
+            \langle p_z \rangle \approx \frac{p_0^2}{3k_B T} E_{\text{loc}} \implies \alpha_d = \frac{p_0^2}{3k_B T}
+        \end{equation}
+        \item Strongly temperature-dependent ($\propto 1/T$) and sluggish; it freezes out at radio and microwave frequencies ($\omega \lesssim 10^{9}\,$\text{rad s}$^{-1}$).
+    \end{itemize}
+\end{enumerate}
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_dispersion_spectrum.pdf}
+\caption{Frequency dispersion of the dielectric polarization mechanisms.}
+\label{fig:dispersion_spectrum}
+\end{figure}
+
+\paragraph{From static polarizability to a frequency-dependent response.}
+The three mechanisms are separated in a frequency sweep because each one is frozen out once the driving frequency exceeds its own relaxation rate: the dipolar term dies out at radio frequencies, the ionic term in the infrared, and only the electronic term survives into the visible. The dynamic counterpart of the Thomson atom --- an electron on a damped harmonic oscillator, from which the complex dielectric function follows --- is derived in Subsection \ref{sec:lorentz_oscillator} of Lecture 2.
+
+\subsection{Piezoelectric Materials}
+\subsubsection{Phenomenology and Symmetry Criteria}
+\textbf{Definition:} Piezoelectricity is the linear coupling between mechanical stress and electric polarization in non-centrosymmetric materials.
+\begin{itemize}
+    \item \textbf{Direct Piezoelectric Effect:} Applying a mechanical stress $\sigma_{jk}$ induces a dielectric polarization $P_i$:
+    \begin{equation}
+        P_i = d_{ijk} \sigma_{jk}
+    \end{equation}
+    where $d_{ijk}$ is the third-rank piezoelectric strain coefficient tensor.
+    \item \textbf{Converse Piezoelectric Effect:} Applying an electric field $E_k$ induces a mechanical strain $\epsilon_{ij}$:
+    \begin{equation}
+        \epsilon_{ij} = d_{kij} E_k
+    \end{equation}
+\end{itemize}
+
+\paragraph{Centrosymmetry Elimination Rule:}
+Under spatial inversion $\mathbf{r} \to -\mathbf{r}$:
+\begin{itemize}
+    \item The polarization vector is odd: $P_i \to -P_i$.
+    \item The stress tensor is even: $\sigma_{jk} \to \sigma_{jk}$.
+\end{itemize}
+Thus: $-P_i = d_{ijk} \sigma_{jk} \implies d_{ijk} = -d_{ijk} \implies d_{ijk} \equiv 0$.
+\textbf{Conclusion:} A crystal possessing a center of inversion cannot be piezoelectric. Of the 32 crystal point groups, 21 lack inversion symmetry, and 20 of these exhibit piezoelectricity (group 432 is the only non-centrosymmetric exception due to high octahedral symmetry).
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_piezoelectric_effect.pdf}
+\caption{Microscopic origin of the direct and converse piezoelectric effects.}
+\label{fig:piezoelectric_effect}
+\end{figure}
+
+\subsubsection{Key Materials and Applications}
+\begin{itemize}
+    \item \textbf{$\alpha$-Quartz ($\text{SiO}_2$):} Non-ferroelectric piezoelectric; highly stable mechanical $Q$-factor ($>10^5$), utilized in crystal oscillators for clocks, microprocessors, and frequency filters.
+    \item \textbf{Lead Zirconate Titanate (PZT, $\text{PbZr}_{1-x}\text{Ti}_x\text{O}_3$):} A perovskite solid solution showing an enormous piezoelectric response near the morphotropic phase boundary ($x \approx 0.48$). Extensively used in ultrasound transducers, SONAR, and micro-positioning actuators.
+    \item \textbf{Polyvinylidene Fluoride (PVDF):} Semi-crystalline piezo-polymer used in flexible wearable sensors and hydrophones.
+\end{itemize}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LECTURE 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+% =============================================================================
+%  PART II: FERROELECTRICS & OPTICAL PROPERTIES
+% =============================================================================
+\section{Ferroelectric Materials and Optical Properties of Solids}
+\label{sec:ferroelectrics_optics}
+
+
+\textit{Duration: 90 Minutes \quad | \quad Walkthrough Target: Spontaneous Order, Phase Transitions, Perovskites, Complex Permittivity, and Optical Constants.}
+
+\subsection{Ferroelectricity: Fundamentals and Classification}
+\textbf{Definition:} A ferroelectric material possesses a spontaneous dielectric polarization $\mathbf{P}_s$ in the absence of an applied electric field, and this polarization can be reversed or reoriented between two or more stable states by an external electric field.
+
+\paragraph{Hierarchy of Dielectric Classes:}
+\begin{equation}
+    \begin{aligned}
+    \text{All dielectrics} &\supset \text{piezoelectrics (20 classes)} \\
+    &\supset \text{pyroelectrics (10 polar classes)} \\
+    &\supset \text{ferroelectrics (switchable } \mathbf{P}_s\text{)}
+    \end{aligned}
+\end{equation}
+
+\subsubsection{Curie-Weiss Law}
+Above the ferroelectric Curie temperature $T_c$, the material transitions into a non-polar paraelectric state. In this paraelectric regime ($T > T_c$), the static dielectric constant diverges according to the \textbf{Curie-Weiss Law}:
+\begin{equation}
+    \epsilon_r = \epsilon_\infty + \frac{C}{T - T_0} \approx \frac{C}{T - T_0}
+\end{equation}
+where $C$ is the Curie constant ($10^3$--$10^5\text{ K}$) and $T_0$ is the Curie-Weiss temperature ($T_0 \le T_c$).
+
+\subsubsection{Classification by Microscopic Transition Mechanism}
+\begin{enumerate}
+    \item \textbf{Displacive Ferroelectrics (e.g., Perovskites: $\text{BaTiO}_3$, $\text{PbTiO}_3$):}
+    \begin{itemize}
+        \item In the paraelectric phase ($T > 120^\circ\text{C}$ for $\text{BaTiO}_3$), the crystal is cubic ($Pm\bar{3}m$): $\text{Ba}^{2+}$ at cube corners, $\text{O}^{2-}$ at face centers, $\text{Ti}^{4+}$ at body center.
+        \item Below $T_c$, $\text{Ti}^{4+}$ and $\text{Ba}^{2+}$ shift relative to the oxygen octahedral cage, breaking cubic symmetry to tetragonal ($P4mm$), generating a spontaneous dipole moment ($P_s \approx 26\,\mu\text{C/cm}^2$).
+    \end{itemize}
+
+    \item \textbf{Order-Disorder Ferroelectrics (e.g., Potassium Dihydrogen Phosphate, $\text{KH}_2\text{PO}_4$ / KDP):}
+    \begin{itemize}
+        \item Protons sit in double-well potential wells along $\text{O}-\text{H}\cdots\text{O}$ hydrogen bonds.
+        \item For $T > T_c$, protons hop dynamically between wells (disordered state). For $T < T_c$, protons freeze cooperatively into one of the off-center minima.
+        \item \textbf{Deuteration Effect:} Substituting H with D ($\text{KD}_2\text{PO}_4$) increases $T_c$ from $123\text{ K}$ to $213\text{ K}$ (a shift of $90\text{ K}$ with $<2\%$ mass change), evidencing quantum tunneling of protons through the double-well barrier.
+    \end{itemize}
+\end{enumerate}
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_perovskite_batio3.pdf}
+\caption{The cubic-to-tetragonal phase transition in barium titanate ($\text{BaTiO}_3$).}
+\label{fig:perovskite_batio3}
+\end{figure}
+
+\subsection{Ferroelectric Domains and Hysteresis}
+To minimize depolarizing electrostatic field energy and elastic strain energy, ferroelectrics break into regions of uniform polarization called \textbf{ferroelectric domains}, separated by domain walls (typically $180^\circ$ and $90^\circ$ walls in perovskites).
+
+\subsubsection{The \texorpdfstring{$P$--$E$}{P-E} Hysteresis Loop}
+Application of a cyclic AC electric field results in characteristic hysteresis due to domain wall pinning, nucleation, and domain reorientation:
+\begin{itemize}
+    \item \textbf{Spontaneous Polarization ($P_s$):} Extrapolation of the saturated high-field polarization curve back to $E = 0$.
+    \item \textbf{Remanent Polarization ($P_r$):} Net polarization remaining in the sample when the external field is removed ($E = 0$).
+    \item \textbf{Coercive Field ($E_c$):} The reverse field required to reduce the net polarization to zero ($P = 0$).
+\end{itemize}
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_hysteresis_loop.pdf}
+\caption{Ferroelectric hysteresis loop and domain switching behavior under external field.}
+\label{fig:hysteresis_loop}
+\end{figure}
+
+\subsubsection{Lattice Dynamics: Cochran Soft Phonon Mode Theory}
+According to W. Cochran, a displacive ferroelectric transition represents a dynamical instability of the transverse optical (TO) phonon branch at zone center ($q = 0$).
+The Lyddane-Sachs-Teller (LST) relation states:
+\begin{equation}
+    \frac{\omega_{LO}^2}{\omega_{TO}^2} = \frac{\epsilon(0)}{\epsilon_\infty}
+\end{equation}
+Combining this with the Curie-Weiss law $\epsilon(0) \propto (T - T_c)^{-1}$ leads directly to:
+\begin{equation}
+    \omega_{TO}^2(T) = \gamma (T - T_c) \implies \omega_{TO} \to 0 \quad \text{as } T \to T_c^+
+\end{equation}
+As temperature cools toward $T_c$, the restoring force for this optical phonon mode softens to zero; the lattice displacement freezes permanently into the unit cell, resulting in the ferroelectric structure.
+
+\subsection{Optical Constants and Complex Dielectric Function}
+\subsubsection{Maxwell Equations and the Complex Refractive Index}
+Consider a monochromatic plane electromagnetic wave propagating along the $+z$ direction in an absorbing solid:
+\begin{equation}
+    \mathbf{E}(z, t) = \mathbf{E}_0 e^{i(\tilde{k}z - \omega t)}, \quad \tilde{k} = \frac{\omega}{c}\tilde{n}(\omega)
+\end{equation}
+where $\tilde{n}(\omega)$ is the \textbf{complex refractive index}:
+\begin{equation}
+    \tilde{n}(\omega) = n(\omega) + i\kappa(\omega)
+\end{equation}
+Here, $n$ is the real refractive index (phase velocity $v_p = c/n$) and $\kappa$ is the extinction coefficient. Substituting $\tilde{n}$ into the wave:
+\begin{equation}
+    \mathbf{E}(z, t) = \mathbf{E}_0 e^{-\frac{\omega\kappa}{c}z} e^{i\left(\frac{\omega n}{c}z - \omega t\right)}
+\end{equation}
+The optical intensity $I(z) \propto |\mathbf{E}|^2$ decays as:
+\begin{equation}
+    I(z) = I_0 e^{-\alpha z}, \quad \text{where } \alpha(\omega) = \frac{2\omega\kappa(\omega)}{c} = \frac{4\pi\kappa(\omega)}{\lambda_0}
+\end{equation}
+$\alpha(\omega)$ is the \textbf{optical absorption coefficient} (Beer-Lambert law).
+
+\subsubsection{Relation between \texorpdfstring{$\tilde{n}$}{n} and the Complex Dielectric Function \texorpdfstring{$\tilde{\epsilon}$}{epsilon}}
+From Maxwell's wave equation, $\tilde{k}^2 = \frac{\omega^2}{c^2}\tilde{\epsilon}_r(\omega)$, hence:
+\begin{equation}
+    \tilde{\epsilon}_r(\omega) = \epsilon_1(\omega) + i \epsilon_2(\omega) = \tilde{n}^2 = (n + i\kappa)^2 = (n^2 - \kappa^2) + i(2n\kappa)
+\end{equation}
+Equating real and imaginary parts:
+\begin{align}
+    \epsilon_1(\omega) &= n^2 - \kappa^2 \\
+    \epsilon_2(\omega) &= 2n\kappa
+\end{align}
+Inverting these relations gives the experimental optical constants in terms of the dielectric function:
+\begin{align}
+    n(\omega) &= \sqrt{\frac{\sqrt{\epsilon_1^2 + \epsilon_2^2} + \epsilon_1}{2}} \\
+    \kappa(\omega) &= \sqrt{\frac{\sqrt{\epsilon_1^2 + \epsilon_2^2} - \epsilon_1}{2}}
+\end{align}
+
+\subsubsection{Normal Incidence Reflectance}
+From electromagnetic boundary conditions at a planar vacuum-dielectric interface:
+\begin{equation}
+    \tilde{r}(\omega) = \frac{\tilde{n} - 1}{\tilde{n} + 1} = \frac{n + i\kappa - 1}{n + i\kappa + 1}
+\end{equation}
+The reflectance $R(\omega) = |\tilde{r}(\omega)|^2$ is given by the Fresnel formula:
+\begin{equation}
+    R(\omega) = \frac{(n - 1)^2 + \kappa^2}{(n + 1)^2 + \kappa^2}
+\end{equation}
+When the material is strongly absorbing or when $\epsilon_1 < 0$ (such that $\kappa \gg n$), the reflectance $R \to 1$ ($100\%$ reflection, characteristic of metallic and Reststrahlen bands).
+
+\subsection{Microscopic Theory: The Lorentz Oscillator Model}
+\label{sec:lorentz_oscillator}
+Model an electron bound to an atomic core with natural resonance frequency $\omega_0$ and phenomenological damping rate $\gamma$:
+\begin{equation}
+    m_e \left( \frac{d^2 x}{dt^2} + \gamma \frac{dx}{dt} + \omega_0^2 x \right) = -e E_0 e^{-i\omega t}
+\end{equation}
+Solving for the steady-state displacement $x(t)$:
+\begin{equation}
+    x(t) = -\frac{e/m_e}{\omega_0^2 - \omega^2 - i\gamma\omega} E(t)
+\end{equation}
+The induced dipole moment is $p = -e x(t)$, yielding the polarization $P = N p = \epsilon_0(\tilde{\epsilon}_r - 1) E$:
+\begin{equation}
+    \tilde{\epsilon}_r(\omega) = 1 + \frac{N e^2}{\epsilon_0 m_e} \frac{1}{\omega_0^2 - \omega^2 - i\gamma\omega} = 1 + \frac{\omega_p^2}{\omega_0^2 - \omega^2 - i\gamma\omega}
+\end{equation}
+where $\omega_p = \sqrt{\frac{N e^2}{\epsilon_0 m_e}}$ is the plasma frequency.
+
+Separating into real and imaginary parts:
+\begin{align}
+    \epsilon_1(\omega) &= 1 + \omega_p^2 \frac{\omega_0^2 - \omega^2}{(\omega_0^2 - \omega^2)^2 + \gamma^2 \omega^2} \\
+    \epsilon_2(\omega) &= \omega_p^2 \frac{\gamma\omega}{(\omega_0^2 - \omega^2)^2 + \gamma^2 \omega^2}
+\end{align}
+
+\paragraph{Physical Regimes:}
+\begin{itemize}
+    \item \textbf{Normal Dispersion ($\frac{d\epsilon_1}{d\omega} > 0$):} Far from resonance ($\omega \ll \omega_0$ or $\omega \gg \omega_0$), absorption $\epsilon_2$ is negligible.
+    \item \textbf{Anomalous Dispersion ($\frac{d\epsilon_1}{d\omega} < 0$):} Inside the resonance window $|\omega - \omega_0| \lesssim \gamma$, $\epsilon_1$ decreases with frequency, accompanied by a sharp absorption peak in $\epsilon_2(\omega)$.
+\end{itemize}
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_lorentz_dispersion.pdf}
+\caption{Real and imaginary parts of the dielectric function in the Lorentz oscillator model.}
+\label{fig:lorentz_dispersion}
+\end{figure}
+
+\subsubsection{Numerical Recipe}
+The two curves of Figure \ref{fig:lorentz_dispersion} follow directly from the two expressions above. The script below is the minimal version of \texttt{make\_figures.py} that ships the figure, and is worth putting on the screen once so that students see that $\epsilon_1$ and $\epsilon_2$ are not independent curves but the two projections of a single complex function:
+\begin{lstlisting}[language=Python,caption={Lorentz oscillator: real and imaginary parts of the dielectric function.},label={lst:lorentz}]
+import numpy as np
+import matplotlib.pyplot as plt
+
+omega_0 = 10.0      # natural resonance frequency (rad/s)
+gamma   = 1.0       # phenomenological damping rate
+wp2     = 40.0      # plasma frequency squared: N e^2 / (eps0 m)
+
+omega = np.linspace(0, 20, 1000)
+denom = (omega_0**2 - omega**2)**2 + (gamma*omega)**2
+
+eps_1 = 1.0 + wp2*(omega_0**2 - omega**2)/denom   # real part
+eps_2 = wp2*(gamma*omega)/denom                  # imaginary part
+
+plt.plot(omega, eps_1, 'b-', lw=2, label=r'$\varepsilon_1(\omega)$')
+plt.plot(omega, eps_2, 'r--', lw=2, label=r'$\varepsilon_2(\omega)$')
+plt.axvline(omega_0, color='gray', linestyle=':', label=r'$\omega_0$')
+plt.xlabel(r'Frequency $\omega$ [rad/s]')
+plt.ylabel(r'Permittivity $\varepsilon(\omega)$')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig('dielectric_dispersion.pdf')
+\end{lstlisting}
+
+\subsection{Interband Transitions, Excitons, and Reststrahlen}
+\subsubsection{Direct and Indirect Interband Transitions}
+In crystalline semiconductors and insulators, optical absorption occurs when photon energy $\hbar\omega \ge E_g$:
+\begin{itemize}
+    \item \textbf{Direct Absorption:} The conduction band minimum and valence band maximum lie at the same point in the Brillouin zone ($k_c = k_v$, usually $\Gamma$ at $k=0$). Because photon momentum $q_{\text{photon}} \approx 0$, vertical transitions occur without phonon assistance:
+    \begin{equation}
+        \alpha_{\text{direct}}(\hbar\omega) \propto (\hbar\omega - E_g)^{1/2}
+    \end{equation}
+    (e.g., GaAs, InSb; sharp absorption edge).
+
+    \item \textbf{Indirect Absorption:} Band extrema are located at different wavevectors ($k_c \neq k_v$). A transition requires emission or absorption of a lattice phonon ($\hbar\Omega_q, \mathbf{q} = \mathbf{k}_c - \mathbf{k}_v$) to conserve crystal momentum:
+    \begin{equation}
+        \hbar\omega = E_g + \Delta E_{\text{electron-hole}} \pm \hbar\Omega_q
+    \end{equation}
+    \begin{equation}
+        \alpha_{\text{indirect}}(\hbar\omega) \propto \frac{(\hbar\omega - E_g \mp \hbar\Omega_q)^2}{e^{\pm \hbar\Omega_q / k_B T} - 1}
+    \end{equation}
+    (e.g., Si, Ge; gradual absorption threshold).
+\end{itemize}
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_interband_transitions.pdf}
+\caption{Direct versus indirect optical absorption mechanisms in semiconductors.}
+\label{fig:interband_transitions}
+\end{figure}
+
+\subsubsection{Excitons}
+An exciton is a neutral bound state of an excited electron and a hole interacting via the Coulomb potential screened by the dielectric constant $\epsilon_r$.
+\begin{itemize}
+    \item \textbf{Wannier-Mott Excitons:} Weakly bound ($E_b \sim 5$--$30\text{ meV}$), large Bohr radius ($a_{\text{exc}} \gg a_{\text{lattice}}$), common in semiconductors ($\text{Si}, \text{GaAs}$). The energy spectrum resembles a hydrogenic atom:
+    \begin{equation}
+        E_n = E_g - \frac{\mu^* e^4}{32\pi^2\epsilon_0^2 \epsilon_r^2 \hbar^2} \frac{1}{n^2} = E_g - \frac{R_y^*}{n^2}, \quad n = 1, 2, 3, \dots
+    \end{equation}
+    where $\mu^* = (m_e^{*-1} + m_h^{*-1})^{-1}$ is the reduced effective mass. Sharp excitonic absorption lines appear immediately below the band edge $E_g$.
+    \item \textbf{Frenkel Excitons:} Strongly bound ($E_b \sim 0.1$--$1\text{ eV}$), tightly localized within a single unit cell, characteristic of molecular crystals and alkali halides.
+\end{itemize}
+
+\subsubsection{Reststrahlen Band (Residual Rays)}
+In ionic crystals (e.g., $\text{NaCl}$), optical phonons couple to transverse electromagnetic waves, creating mixed mode quasiparticles known as \textbf{phonon polaritons}.
+In the frequency window between $\omega_{TO}$ and $\omega_{LO}$:
+\begin{equation}
+    \epsilon_1(\omega) = \epsilon_\infty + \frac{\epsilon(0) - \epsilon_\infty}{1 - (\omega/\omega_{TO})^2} < 0
+\end{equation}
+When $\epsilon_1 < 0$ and damping is low, the refractive index is purely imaginary ($n \to 0, \kappa > 0$), resulting in nearly total reflection ($R \approx 100\%$). This frequency region ($\omega_{TO} < \omega < \omega_{LO}$) is the \textbf{Reststrahlen band}.
+
+\vspace{0.2cm}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_restrahlen_polariton.pdf}
+\caption{Reststrahlen reflectance band and phonon-polariton dispersion in ionic crystals.}
+\label{fig:reststrahlen_polariton}
+\end{figure}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUMMARY TABLE AND WALKTHROUGH CHECKLIST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+% =============================================================================
+%  PART III: MASTER SUMMARY & CONCEPTUAL ROADMAP
+% =============================================================================
+\section{Master Summary of Governing Equations and Conceptual Framework}
+\label{sec:master_summary}
+
+\subsection{Consolidated Mathematical Backbone}
+Table \ref{tab:recap} synthesizes the governing formulas across the dielectric, ferroelectric, and optical domains. Every equation is formulated in standard SI units.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Phenomenon} & \textbf{Core Equation} & \textbf{Key Physical Quantities} \\
+\midrule
+Dilute-Gas Limit & $\epsilon_r = 1 + \dfrac{N\alpha}{\epsilon_0}$ & $N$: number density, $\alpha$: atomic polarizability \\
+Lorentz Local Field & $\mathbf{E}_{\text{loc}} = \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0}$ & $\mathbf{E}$: macroscopic field, $\mathbf{P}$: polarization \\
+Depolarization Field & $\mathbf{E}_{\text{dep},i} = -N_i\mathbf{P}_i/\epsilon_0,\ \sum_i N_i = 1$ & $N_i$: depolarization factor (specimen geometry) \\
+Clausius-Mossotti & $\frac{\epsilon_r - 1}{\epsilon_r + 2} = \frac{1}{3\epsilon_0}\sum N_i \alpha_i$ & $N$: atomic density, $\alpha$: microscopic polarizability \\
+Thomson Atom & $\alpha_e = 4\pi\epsilon_0 R^3 \quad (\mathrm{SI})$ & $R$: atomic radius; rigid electron cloud of $-Ze$ \\
+Lorentz-Lorenz & $\frac{n^2 - 1}{n^2 + 2} = \frac{N\alpha_e}{3\epsilon_0}$ & $n$: optical refractive index; electronic term only \\
+Piezoelectricity & $P_i = d_{ijk}\sigma_{jk}, \quad \epsilon_{ij} = d_{kij}E_k$ & $d$: piezoelectric tensor, $\sigma$: stress, $\epsilon$: strain \\
+Curie-Weiss Law & $\epsilon_r \approx \frac{C}{T - T_0} \quad (T > T_c)$ & $C$: Curie constant, $T_0$: Curie-Weiss temperature \\
+Lyddane-Sachs-Teller & $\frac{\omega_{LO}^2}{\omega_{TO}^2} = \frac{\epsilon(0)}{\epsilon_\infty}$ & $\omega_{LO}, \omega_{TO}$: optical phonon frequencies \\
+Optical Complex Index & $\tilde{n} = n + i\kappa = \sqrt{\epsilon_1 + i\epsilon_2}$ & $n$: refraction index, $\kappa$: extinction coefficient \\
+Fresnel Normal Reflectance & $R = \frac{(n-1)^2 + \kappa^2}{(n+1)^2 + \kappa^2}$ & $R$: fraction of reflected power \\
+Exciton Energy Levels & $E_n = E_g - \frac{R_y^*}{n^2}$ & $R_y^*$: effective Rydberg energy, $n$: quantum number \\
+\bottomrule
+\end{tabularx}
+\caption{Comprehensive recap of the mathematical backbone for Lectures 1 and 2.}
+\label{tab:recap}
+\end{table}
+
+\subsection{Conceptual Synthesis and Physical Interconnections}
+Understanding Module 5B requires appreciating how microscopic interactions dictate macroscopic physical observables:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{The Feedback Mechanism of the Local Field:} In dense media, induced dipoles enhance the field acting on their neighbors ($\mathbf{E}_{\text{loc}} = \mathbf{E} + \mathbf{P}/3\epsilon_0$). When the polarizability density $N\alpha$ approaches the critical threshold $3\epsilon_0$, the denominator in the Clausius--Mossotti equation vanishes, leading to an electrostatic instability (the \emph{polarization catastrophe}) that drives the transition into a ferroelectric state.
+    \item \textbf{Symmetry Hierarchy:} Inversion symmetry $\mathcal{I}$ is the ultimate gatekeeper:
+    \begin{align*}
+        \text{Centrosymmetric (11 classes)} &\implies \text{No Piezoelectricity} \\
+        \text{Non-centrosymmetric (21 classes)} &\xrightarrow{\text{exclude 432}} \text{Piezoelectric (20)} \\
+        &\xrightarrow{\text{unique polar axis}} \text{Pyroelectric (10)} \\
+        &\xrightarrow{\text{reversible }\mathbf{P}_s} \text{Ferroelectric}
+    \end{align*}
+    \item \textbf{Lattice Dynamics and Optical Resonance:} Optical properties reflect the frequency-dependent inertia of charges. At radio/microwave frequencies ($\omega < 10^{10}\,\text{rad/s}$), molecular dipoles reorient; in the infrared ($\omega \sim 10^{13}\,\text{rad/s}$), ions vibrate, yielding Reststrahlen total reflection; at optical/UV frequencies ($\omega \sim 10^{15}$--$10^{16}\,\text{rad/s}$), only valence electrons follow the oscillation. The Lyddane--Sachs--Teller relation directly links the lattice vibration frequencies ($\omega_{LO}/\omega_{TO}$) to the static and optical dielectric constants ($\epsilon(0)/\epsilon_\infty$).
+\end{itemize}
+
+\newpage
+% =============================================================================
+%  PART IV: WORKED PROBLEMS & DETAILED SOLUTIONS
+% =============================================================================
+\section{Comprehensive Worked Problems and Step-by-Step Model Solutions}
+\label{sec:worked_problems}
+
+This section contains rigorous, step-by-step solutions for the benchmark problems covering Module 5B. Every numerical result has been derived from first principles and verified with analytical precision.
+
+\begin{examplebox}{Problem P1: Clausius--Mossotti Relation and Local Field Enhancement}{ex:p1}
+A dielectric material has a dimensionless polarizability density $x \equiv \dfrac{N\alpha}{3\epsilon_0} = 0.25$.
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Calculate the relative permittivity (dielectric constant) $\epsilon_r$ of the material.
+    \item Determine the ratio of the local microscopic electric field to the macroscopic field, $E_{\text{loc}}/E$.
+\end{enumerate}
+\end{examplebox}
+
+\begin{solbox}{Problem P1}
+\textbf{Part (a): Calculation of $\epsilon_r$} \\
+The Clausius--Mossotti relation connects macroscopic permittivity $\epsilon_r$ to microscopic polarizability $\alpha$:
+\begin{equation}
+    \frac{\epsilon_r - 1}{\epsilon_r + 2} = \frac{N\alpha}{3\epsilon_0} \equiv x
+\end{equation}
+Solving this equation explicitly for $\epsilon_r$:
+\begin{equation}
+    \epsilon_r - 1 = x(\epsilon_r + 2) \implies \epsilon_r(1 - x) = 1 + 2x \implies \epsilon_r = \frac{1 + 2x}{1 - x}
+\end{equation}
+Substituting the given value $x = 0.25 = 1/4$:
+\begin{equation}
+    \epsilon_r = \frac{1 + 2(0.25)}{1 - 0.25} = \frac{1 + 0.50}{0.75} = \frac{1.50}{0.75} = \mathbf{2.00}
+\end{equation}
+
+\textbf{Part (b): Local Field Ratio $E_{\text{loc}}/E$} \\
+In a medium with cubic site symmetry, the Lorentz local field is given by:
+\begin{equation}
+    \mathbf{E}_{\text{loc}} = \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0}
+\end{equation}
+Using the constitutive relation $\mathbf{P} = \epsilon_0(\epsilon_r - 1)\mathbf{E}$:
+\begin{equation}
+    \mathbf{E}_{\text{loc}} = \mathbf{E} + \frac{\epsilon_0(\epsilon_r - 1)\mathbf{E}}{3\epsilon_0} = \left[1 + \frac{\epsilon_r - 1}{3}\right]\mathbf{E} = \left(\frac{\epsilon_r + 2}{3}\right)\mathbf{E}
+\end{equation}
+Substituting $\epsilon_r = 2$:
+\begin{equation}
+    \frac{E_{\text{loc}}}{E} = \frac{2 + 2}{3} = \mathbf{\frac{4}{3}} \approx 1.333
+\end{equation}
+\textbf{Physical Insight:} Due to the constructive dipole field from the Lorentz cavity surface bound charges, the local field experienced by an atom inside the dielectric is $33.3\%$ larger than the macroscopic Maxwell field.
+\end{solbox}
+
+\vspace{0.4cm}
+
+\begin{examplebox}{Problem P2: Inversion Symmetry and Piezoelectric Point Groups}{ex:p2}
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Prove rigorously using Neumann's principle that any crystal possessing a centre of inversion cannot exhibit piezoelectricity.
+    \item Out of the 32 crystallographic point groups, state exactly how many are non-centrosymmetric, and how many of these are piezoelectric. Name the exception.
+\end{enumerate}
+\end{examplebox}
+
+\begin{solbox}{Problem P2}
+\textbf{Part (a): Symmetry Proof} \\
+The direct piezoelectric effect relates the induced electric polarization vector $\mathbf{P}$ (rank-1 polar tensor) to the applied mechanical stress tensor $\boldsymbol{\sigma}$ (rank-2 symmetric tensor):
+\begin{equation}
+    P_i = d_{ijk} \sigma_{jk}
+\end{equation}
+where $d_{ijk}$ is the third-rank piezoelectric tensor.
+Under the spatial inversion operation $\mathcal{I}: \mathbf{r} \to -\mathbf{r}$ (transformation matrix $a_{ij} = -\delta_{ij}$):
+\begin{itemize}
+    \item Polar vector $\mathbf{P}$ transforms as $P_i \to -P_i$ (odd parity).
+    \item Second-rank stress tensor $\sigma_{jk}$ transforms as $\sigma_{jk} \to (-1)(-1)\sigma_{jk} = +\sigma_{jk}$ (even parity).
+\end{itemize}
+According to Neumann's principle, if a crystal possesses inversion symmetry, its physical property tensor must remain invariant under $\mathcal{I}$:
+\begin{equation}
+    d_{ijk} = a_{il} a_{jm} a_{kn} d_{lmn} = (-1)(-1)(-1) d_{ijk} = -d_{ijk}
+\end{equation}
+The only mathematical solution to $d_{ijk} = -d_{ijk}$ is:
+\begin{equation}
+    d_{ijk} \equiv 0 \quad \text{for all } i, j, k
+\end{equation}
+Thus, a centrosymmetric crystal cannot exhibit piezoelectricity.
+
+\textbf{Part (b): Crystallographic Group Classification} \\
+Of the 32 crystallographic point groups:
+\begin{itemize}
+    \item 11 point groups possess a centre of inversion ($C_i, C_{2h}, D_{2h}, C_{4h}, D_{4h}, S_6, D_{3d}, C_{6h}, D_{6h}, T_h, O_h$). None are piezoelectric.
+    \item The remaining $32 - 11 = \mathbf{21}$ point groups lack an inversion centre.
+    \item Among these 21 non-centrosymmetric groups, $\mathbf{20}$ exhibit piezoelectricity.
+    \item The sole non-centrosymmetric exception is the cubic point group $\mathbf{432}$ ($O$ in Schönflies notation). In group 432, the combination of multiple mutually orthogonal rotation axes produces high symmetry that forces all components of the third-rank tensor $d_{ijk}$ to vanish identically, despite the absence of an inversion centre.
+\end{itemize}
+\end{solbox}
+
+\newpage
+
+\begin{examplebox}{Problem P3: Ferroelectric Susceptibility and the Curie--Weiss Law}{ex:p3}
+A ferroelectric material in its paraelectric phase ($T > T_c$) obeys the Curie--Weiss relation:
+\begin{equation}
+    \epsilon_r = \frac{C}{T - T_0}
+\end{equation}
+with Curie constant $C = 1.20 \times 10^5\,\text{K}$ and Curie--Weiss temperature $T_0 = 393\,\text{K}$ ($120^\circ\text{C}$). At what absolute temperature $T$ does the relative permittivity drop to $\epsilon_r = 600$?
+\end{examplebox}
+
+\begin{solbox}{Problem P3}
+Rearranging the Curie--Weiss law to solve for temperature $T$:
+\begin{equation}
+    T - T_0 = \frac{C}{\epsilon_r} \implies T = T_0 + \frac{C}{\epsilon_r}
+\end{equation}
+Substituting the given parameters:
+\begin{align}
+    T &= 393\,\text{K} + \frac{1.20 \times 10^5\,\text{K}}{600} \\
+      &= 393\,\text{K} + 200\,\text{K} = \mathbf{593\,\text{K}} \quad (320^\circ\text{C})
+\end{align}
+\textbf{Check \& Physical Context:}
+At $T \to T_0^+$, $\epsilon_r \to \infty$. As temperature increases $200\,\text{K}$ above $T_0$ to $593\,\text{K}$, thermal fluctuations progressively disorder the dipolar displacements, reducing the dielectric response to $\epsilon_r = 600$, which is still three orders of magnitude larger than ordinary non-ferroelectric insulators.
+\end{solbox}
+
+\vspace{0.4cm}
+
+\begin{examplebox}{Problem P4: Complex Permittivity, Refractive Index, and Reflectance}{ex:p4}
+An absorbing solid has real and imaginary components of the complex dielectric function given by $\epsilon_1 = 4.0$ and $\epsilon_2 = 1.0$ at a laser frequency $\omega$.
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Calculate the real refractive index $n$ and the extinction coefficient $\kappa$.
+    \item Compute the normal-incidence optical power reflectance $R$.
+\end{enumerate}
+\end{examplebox}
+
+\begin{solbox}{Problem P4}
+\textbf{Part (a): Determination of $n$ and $\kappa$} \\
+The complex dielectric function $\tilde\epsilon = \epsilon_1 + i\epsilon_2$ is related to the complex refractive index $\tilde n = n + i\kappa$ by:
+\begin{equation}
+    \tilde\epsilon = \tilde n^2 = (n + i\kappa)^2 = (n^2 - \kappa^2) + i(2n\kappa)
+\end{equation}
+Equating real and imaginary parts:
+\begin{equation}
+    \epsilon_1 = n^2 - \kappa^2 = 4.0, \qquad \epsilon_2 = 2n\kappa = 1.0
+\end{equation}
+The magnitude of the dielectric function is:
+\begin{equation}
+    |\tilde\epsilon| = \sqrt{\epsilon_1^2 + \epsilon_2^2} = \sqrt{4.0^2 + 1.0^2} = \sqrt{17} \approx 4.1231
+\end{equation}
+Since $n^2 + \kappa^2 = |\tilde n|^2 = |\tilde\epsilon|$, we solve directly for $n$ and $\kappa$:
+\begin{align}
+    n &= \sqrt{\frac{|\tilde\epsilon| + \epsilon_1}{2}} = \sqrt{\frac{4.1231 + 4.0}{2}} = \sqrt{\frac{8.1231}{2}} = \sqrt{4.06155} \approx \mathbf{2.0153} \\
+    \kappa &= \sqrt{\frac{|\tilde\epsilon| - \epsilon_1}{2}} = \sqrt{\frac{4.1231 - 4.0}{2}} = \sqrt{\frac{0.1231}{2}} = \sqrt{0.06155} \approx \mathbf{0.2481}
+\end{align}
+\textit{Cross-check:} $n^2 - \kappa^2 = 4.06155 - 0.06155 = 4.0000 = \epsilon_1$, and $2n\kappa = 2(2.0153)(0.2481) = 1.000 = \epsilon_2$.
+
+\textbf{Part (b): Normal-Incidence Power Reflectance $R$} \\
+From Fresnel's reflection formula at normal incidence:
+\begin{equation}
+    R = \frac{(n - 1)^2 + \kappa^2}{(n + 1)^2 + \kappa^2}
+\end{equation}
+Substituting $n = 2.0153$ and $\kappa = 0.2481$:
+\begin{align}
+    (n - 1)^2 + \kappa^2 &= (1.0153)^2 + (0.2481)^2 = 1.0308 + 0.06155 = 1.0924 \\
+    (n + 1)^2 + \kappa^2 &= (3.0153)^2 + (0.2481)^2 = 9.0920 + 0.06155 = 9.1536
+\end{align}
+\begin{equation}
+    R = \frac{1.0924}{9.1536} \approx \mathbf{0.1193} \quad (\approx \mathbf{11.93\%})
+\end{equation}
+\end{solbox}
+
+\newpage
+
+\begin{examplebox}{Problem P5: Lyddane--Sachs--Teller Relation and Optical Phonon Splitting}{ex:p5}
+In a polar crystal, the static dielectric constant is measured to be $\epsilon(0) = 1000$, and the high-frequency optical dielectric constant is $\epsilon_\infty = 5.0$. The transverse optical (TO) phonon frequency is measured by infrared spectroscopy to be $\omega_{TO} = 1.0 \times 10^{13}\,\text{rad s}^{-1}$.
+Find the longitudinal optical (LO) phonon frequency $\omega_{LO}$ and the ratio $\omega_{LO}/\omega_{TO}$.
+\end{examplebox}
+
+\begin{solbox}{Problem P5}
+The Lyddane--Sachs--Teller (LST) relation links the ratio of phonon mode frequencies to macroscopic permittivity values:
+\begin{equation}
+    \frac{\omega_{LO}^2}{\omega_{TO}^2} = \frac{\epsilon(0)}{\epsilon_\infty}
+\end{equation}
+Taking the square root:
+\begin{equation}
+    \omega_{LO} = \omega_{TO} \sqrt{\frac{\epsilon(0)}{\epsilon_\infty}}
+\end{equation}
+Substituting the given numerical values:
+\begin{equation}
+    \frac{\epsilon(0)}{\epsilon_\infty} = \frac{1000}{5.0} = 200
+\end{equation}
+\begin{equation}
+    \sqrt{200} = 10\sqrt{2} \approx 14.1421
+\end{equation}
+Therefore:
+\begin{equation}
+    \omega_{LO} = (1.0 \times 10^{13}\,\text{rad s}^{-1}) \times 14.1421 = \mathbf{1.4142 \times 10^{14}\,\text{rad s}^{-1}}
+\end{equation}
+\begin{equation}
+    \frac{\omega_{LO}}{\omega_{TO}} = \mathbf{14.142}
+\end{equation}
+\textbf{Physical Meaning:}
+In a longitudinal mode, the macroscopic polarization creates a macroscopic restoring depolarizing field ($\mathbf{E} = -\mathbf{P}/\epsilon_0$), stiffening the effective spring constant and dramatically shifting $\omega_{LO}$ upward by a factor of $\approx 14.1$ into the near infrared. In contrast, in a transverse mode, $\nabla \cdot \mathbf{P} = 0$, so no macroscopic depolarizing field arises.
+\end{solbox}
+
+\vspace{0.4cm}
+
+\begin{examplebox}{Problem P6: Separating Electronic and Ionic Polarizability: NaCl vs. Diamond}{ex:p6}
+For rocksalt (NaCl), the static permittivity is $\epsilon_r(0) = 5.62$ and the optical refractive index is $n = 1.50$. For diamond, $\epsilon_r(0) = 5.68$ and $n = 2.38$.
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Compute the Clausius--Mossotti factor $Y \equiv \dfrac{\epsilon_r - 1}{\epsilon_r + 2}$ for both materials under static and optical conditions (recalling $\epsilon_r(\text{opt}) = n^2$).
+    \item Determine what fraction of the static dielectric response of NaCl is of ionic origin.
+    \item Explain physically why the two values of $Y$ coincide exactly for diamond, but diverge dramatically for NaCl.
+\end{enumerate}
+\end{examplebox}
+
+\begin{solbox}{Problem P6}
+\textbf{Part (a): Computation of $Y$} \\
+For \textbf{NaCl}:
+\begin{align}
+    \text{Static: } & \epsilon_r(0) = 5.62 \implies Y^{(\text{static})} = \frac{5.62 - 1}{5.62 + 2} = \frac{4.62}{7.62} \approx \mathbf{0.6063} \\
+    \text{Optical: } & \epsilon_r(\text{opt}) = n^2 = 1.50^2 = 2.25 \implies Y^{(n)} = \frac{2.25 - 1}{2.25 + 2} = \frac{1.25}{4.25} \approx \mathbf{0.2941}
+\end{align}
+For \textbf{Diamond}:
+\begin{align}
+    \text{Static: } & \epsilon_r(0) = 5.68 \implies Y^{(\text{static})} = \frac{5.68 - 1}{5.68 + 2} = \frac{4.68}{7.68} \approx \mathbf{0.6094} \\
+    \text{Optical: } & \epsilon_r(\text{opt}) = n^2 = 2.38^2 = 5.6644 \implies Y^{(n)} = \frac{5.6644 - 1}{5.6644 + 2} = \frac{4.6644}{7.6644} \approx \mathbf{0.6086}
+\end{align}
+
+\textbf{Part (b): Ionic Share in NaCl} \\
+In the optical regime ($\omega \sim 10^{15}\,\text{rad s}^{-1}$), heavy ions cannot follow the electric field; only electronic polarizability contributes:
+\begin{equation}
+    Y^{(n)} = \frac{N\alpha_e}{3\epsilon_0} = 0.2941, \qquad Y^{(\text{static})} = \frac{N(\alpha_e + \alpha_i)}{3\epsilon_0} = 0.6063
+\end{equation}
+The ionic contribution to $Y$ is:
+\begin{equation}
+    Y_{\text{ionic}} = Y^{(\text{static})} - Y^{(n)} = 0.6063 - 0.2941 = \mathbf{0.3122}
+\end{equation}
+Expressed as a fraction of the total static susceptibility contribution:
+\begin{equation}
+    f_{\text{ionic}} = 1 - \frac{n^2 - 1}{\epsilon_r(0) - 1} = 1 - \frac{2.25 - 1}{5.62 - 1} = 1 - \frac{1.25}{4.62} = 1 - 0.2706 \approx 72.9\%
+\end{equation}
+Or evaluated directly from the Clausius--Mossotti polarizability shares:
+\begin{equation}
+    \frac{\alpha_i}{\alpha_e + \alpha_i} = \frac{0.3122}{0.6063} \approx \mathbf{51.5\%}
+\end{equation}
+In either convention, the ionic displacement contributes more than half of the static polarization.
+
+\textbf{Part (c): Physical Reason for the Contrast} \\
+\begin{itemize}
+    \item \textbf{Diamond:} Carbon atoms are held together by purely homopolar, covalent bonds with identical electronegativity. No net ionic charges exist on lattice sites ($\pm q = 0$). Hence, relative displacement of adjacent carbon sublattices produces zero net electric dipole moment ($\alpha_i = 0$). The only polarization mechanism available is the distortion of the electronic cloud, so $\alpha_{\text{static}} = \alpha_{\text{optical}} = \alpha_e$, yielding $Y^{(\text{static})} \approx Y^{(n)} = 0.609$.
+    \item \textbf{NaCl:} The lattice is composed of alternating positive $\text{Na}^+$ and negative $\text{Cl}^-$ ions. In a static electric field, the entire positive and negative sublattices displace in opposite directions, producing a massive ionic dipole moment that accounts for over half the dielectric response. In the visible spectrum, the field alternates too rapidly ($10^{15}\,\text{Hz}$) for the heavy nuclei to respond, freezing out the ionic contribution and leaving only $\alpha_e$.
+\end{itemize}
+\end{solbox}
+
+\newpage
+
+\begin{examplebox}{Problem P7: Depolarization Fields in Spherical vs. Needle Geometries}{ex:p7}
+A dielectric specimen is uniformly polarized with $\mathbf{P} = 0.10\,\text{C m}^{-2}\hat{\mathbf{z}}$.
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Calculate the internal depolarizing field $\mathbf{E}_{\text{dep}}$ inside a spherical specimen.
+    \item Calculate $\mathbf{E}_{\text{dep}}$ inside a long, slender needle oriented parallel to $\mathbf{P}$.
+    \item In which of the two geometries is the local field $\mathbf{E}_{\text{loc}}$ at an atomic site closest to the externally applied field $\mathbf{E}_0$?
+\end{enumerate}
+\end{examplebox}
+
+\begin{solbox}{Problem P7}
+\textbf{Part (a): Spherical Specimen} \\
+For a sphere, the depolarization factor along any principal axis is $N_x = N_y = N_z = 1/3$.
+The depolarizing field is:
+\begin{equation}
+    \mathbf{E}_{\text{dep}} = -\frac{N_z P}{\epsilon_0}\hat{\mathbf{z}} = -\frac{P}{3\epsilon_0}\hat{\mathbf{z}}
+\end{equation}
+Using $\epsilon_0 = 8.85419 \times 10^{-12}\,\text{F m}^{-1}$:
+\begin{equation}
+    \mathbf{E}_{\text{dep}} = -\frac{0.10\,\text{C m}^{-2}}{3 \times 8.85419 \times 10^{-12}\,\text{F m}^{-1}}\hat{\mathbf{z}} = \mathbf{-3.765 \times 10^9\,\text{V m}^{-1}\,\hat{\mathbf{z}}}
+\end{equation}
+This is a colossal opposing electric field on the order of $3.765\,\text{GV m}^{-1}$.
+
+\textbf{Part (b): Needle Specimen Parallel to $\mathbf{P}$} \\
+For a long cylinder or needle of length $L \gg R$ aligned along $\hat{\mathbf{z}}$, the bound surface charges occur only on the distant flat end-caps:
+\begin{equation}
+    N_z \to 0, \qquad N_x = N_y = \frac{1}{2}
+\end{equation}
+Therefore, along the needle axis:
+\begin{equation}
+    \mathbf{E}_{\text{dep}} = -N_z \frac{\mathbf{P}}{\epsilon_0} = \mathbf{0}
+\end{equation}
+
+\textbf{Part (c): Comparison of Local Fields} \\
+The macroscopic field inside the specimen is $\mathbf{E} = \mathbf{E}_0 + \mathbf{E}_{\text{dep}}$.
+The local field at an atomic site with cubic symmetry is:
+\begin{equation}
+    \mathbf{E}_{\text{loc}} = \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0} = \mathbf{E}_0 + \mathbf{E}_{\text{dep}} + \frac{\mathbf{P}}{3\epsilon_0} = \mathbf{E}_0 + \left(\frac{1}{3} - N_z\right)\frac{\mathbf{P}}{\epsilon_0}
+\end{equation}
+\begin{itemize}
+    \item \textbf{For the Sphere ($N_z = 1/3$):}
+    \begin{equation}
+        \mathbf{E}_{\text{loc}} = \mathbf{E}_0 + \left(\frac{1}{3} - \frac{1}{3}\right)\frac{\mathbf{P}}{\epsilon_0} = \mathbf{E}_0
+    \end{equation}
+    Remarkably, inside a sphere, the macroscopic depolarizing field $\mathbf{E}_{\text{dep}} = -\mathbf{P}/3\epsilon_0$ \emph{exactly cancels} the Lorentz cavity field $\mathbf{E}_2 = +\mathbf{P}/3\epsilon_0$. Consequently, $\mathbf{E}_{\text{loc}}$ equals the applied external field $\mathbf{E}_0$!
+    \item \textbf{For the Needle ($N_z = 0$):}
+    \begin{equation}
+        \mathbf{E}_{\text{loc}} = \mathbf{E}_0 + \frac{\mathbf{P}}{3\epsilon_0} = \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0}
+    \end{equation}
+    Here $\mathbf{E}_{\text{loc}}$ exceeds the macroscopic field by $+3.765 \times 10^9\,\text{V m}^{-1}$.
+\end{itemize}
+\textbf{Conclusion:} In terms of matching the external applied field $\mathbf{E}_0$, the local field inside a \textbf{spherical} specimen is identical to $\mathbf{E}_0$; whereas inside a needle, the macroscopic field matches $\mathbf{E}_0$ while the local field is enhanced by $\mathbf{P}/3\epsilon_0$.
+\end{solbox}
+
+\newpage
+% =============================================================================
+%  PART V: ORAL CONCEPTUAL EXAMINATION QUESTIONS & MODEL ANSWERS
+% =============================================================================
+\section{Oral Conceptual Examination Questions and Rigorous Model Answers}
+\label{sec:viva_questions}
+
+These four foundational questions test physical reasoning and are frequent topics in postgraduate comprehensive vivas and doctoral qualifying examinations.
+
+\begin{checkpointbox}{Viva Question 1: High-Frequency Limit of Gaseous Permittivity}
+\textbf{Question:} Why does the relative permittivity of a gas approach unity ($\epsilon_r \to 1$) at very high frequencies (e.g., ultraviolet and X-ray regimes)?
+
+\textbf{Comprehensive Model Answer:}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Driven Oscillator Dynamics:}
+    The displacement $\mathbf{x}(t)$ of a bound electron with natural resonance frequency $\omega_0$, damping $\gamma$, and mass $m$ in an alternating electric field $\mathbf{E}(t) = \mathbf{E}_0 e^{-i\omega t}$ is governed by the equation of motion:
+    \begin{equation*}
+        m\ddot{\mathbf{x}} + m\gamma\dot{\mathbf{x}} + m\omega_0^2\mathbf{x} = -e\mathbf{E}_0 e^{-i\omega t}
+    \end{equation*}
+    The steady-state solution gives the frequency-dependent polarizability:
+    \begin{equation*}
+        \alpha(\omega) = \frac{e^2/m}{\omega_0^2 - \omega^2 - i\gamma\omega}
+    \end{equation*}
+    \item \textbf{Asymptotic Behavior at $\omega \gg \omega_0$:}
+    When the driving frequency far exceeds the binding resonant frequency of the electrons ($\omega \gg \omega_0, \gamma$), the inertia of the electron prevents it from following the field. The restoring and damping forces become negligible compared to the acceleration term $m\ddot{\mathbf{x}} \sim -m\omega^2 \mathbf{x}$. The polarizability scales as:
+    \begin{equation*}
+        \alpha(\omega) \approx -\frac{e^2}{m\omega^2} \xrightarrow{\omega \to \infty} 0
+    \end{equation*}
+    \item \textbf{Permittivity Limit:}
+    In a dilute gas, $\epsilon_r(\omega) = 1 + \dfrac{N\alpha(\omega)}{\epsilon_0} \approx 1 - \dfrac{N e^2}{\epsilon_0 m \omega^2} = 1 - \frac{\omega_p^2}{\omega^2}$.
+    As $\omega \to \infty$, the second term vanishes asymptotically, and $\epsilon_r \to \mathbf{1}$. Physically, at X-ray frequencies, the electromagnetic field oscillates so rapidly that the bound electrons cannot respond, and the medium behaves electrodynamically as free vacuum.
+\end{enumerate}
+\end{checkpointbox}
+
+\vspace{0.4cm}
+
+\begin{checkpointbox}{Viva Question 2: Pyroelectricity vs. Spontaneous Polarization in Crystals}
+\textbf{Question:} Can a non-centrosymmetric crystal exhibit piezoelectricity without being pyroelectric? Can it be pyroelectric without being ferroelectric? Explain the symmetry hierarchy.
+
+\textbf{Comprehensive Model Answer:}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Piezoelectricity vs. Pyroelectricity:}
+    Yes. Out of the 32 crystal point groups, 21 lack an inversion centre, and 20 are piezoelectric. However, piezoelectricity only requires an induced dipole under \emph{external mechanical stress} ($P_i = d_{ijk}\sigma_{jk}$).
+    In contrast, \textbf{pyroelectricity} requires a permanent, spontaneous electric dipole moment $\mathbf{P}_s$ in the absence of stress or applied field. Under crystal symmetry transformations, a permanent vector $\mathbf{P}_s$ must remain invariant. This is only possible if the point group possesses a \emph{unique polar rotation axis} that is not inverted or flipped by perpendicular two-fold axes or mirror planes.
+    Only \textbf{10 point groups} satisfy this condition: $1, 2, m, mm2, 4, 4mm, 3, 3m, 6, 6mm$ (all polar groups). The remaining 10 piezoelectric groups (such as quartz, point group $32$, or cubic $\bar{4}3m$) lack a unique polar axis; their internal dipoles cancel out symmetrically in the ground state.
+    \item \textbf{Pyroelectricity vs. Ferroelectricity:}
+    A crystal can be pyroelectric without being ferroelectric!
+    A \textbf{ferroelectric} is a subgroup of pyroelectric crystals in which the spontaneous polarization $\mathbf{P}_s$ can be \emph{reoriented or reversed between two or more stable orientations by an achievable external electric field}.
+    Certain pyroelectric crystals (such as wurtzite $\text{ZnO}$ or tourmaline) possess a permanent $\mathbf{P}_s$, but their crystal lattices are so rigid that the electric field required to reverse $\mathbf{P}_s$ exceeds the dielectric breakdown strength of the crystal ($E_{\text{switch}} > E_{\text{breakdown}}$). Thus, they are pyroelectric, but not ferroelectric.
+\end{enumerate}
+\end{checkpointbox}
+
+\newpage
+
+\begin{checkpointbox}{Viva Question 3: Imaginary Refractive Index in the Reststrahlen Band}
+\textbf{Question:} Inside the Reststrahlen band between $\omega_{TO}$ and $\omega_{LO}$, why is the refractive index purely imaginary in the absence of damping, and what is the physical consequence for reflection?
+
+\textbf{Comprehensive Model Answer:}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Dielectric Function in the Phonon Gap:}
+    For an undamped polar lattice ($\gamma \to 0$), the Lyddane--Sachs--Teller dielectric function is:
+    \begin{equation*}
+        \epsilon(\omega) = \epsilon_\infty + \frac{\epsilon(0) - \epsilon_\infty}{1 - (\omega/\omega_{TO})^2} = \epsilon_\infty \left(\frac{\omega_{LO}^2 - \omega^2}{\omega_{TO}^2 - \omega^2}\right)
+    \end{equation*}
+    For frequencies between the transverse and longitudinal optical phonons, $\omega_{TO} < \omega < \omega_{LO}$:
+    \begin{equation*}
+        \omega^2 - \omega_{TO}^2 > 0 \quad \text{and} \quad \omega_{LO}^2 - \omega^2 > 0 \implies \boldsymbol{\epsilon(\omega) < 0}
+    \end{equation*}
+    The dielectric function is strictly \textbf{negative and real}.
+    \item \textbf{Refractive Index Calculation:}
+    The complex refractive index $\tilde n = n + i\kappa = \sqrt{\epsilon(\omega)}$. Since $\epsilon(\omega) = -|\epsilon|$, we have:
+    \begin{equation*}
+        \tilde n = \sqrt{-|\epsilon|} = i\sqrt{|\epsilon|} \implies \boldsymbol{n = 0, \quad \kappa = \sqrt{|\epsilon|}}
+    \end{equation*}
+    The real refractive index $n$ is identically zero, and $\tilde n$ is purely imaginary.
+    \item \textbf{Physical Consequence --- Total Reflection:}
+    The electromagnetic wavevector in the medium is $k = \tilde n \omega / c = i \kappa \omega / c$. The spatial wave solution becomes an evanescent, exponentially decaying wave:
+    \begin{equation*}
+        \mathbf{E}(z, t) = \mathbf{E}_0 e^{-(\kappa\omega/c)z} e^{-i\omega t}
+    \end{equation*}
+    No propagating electromagnetic energy can penetrate the bulk crystal. Substituting $n = 0$ into Fresnel's normal-incidence reflectance:
+    \begin{equation*}
+        R = \frac{(n - 1)^2 + \kappa^2}{(n + 1)^2 + \kappa^2} = \frac{(-1)^2 + \kappa^2}{(+1)^2 + \kappa^2} = \frac{1 + \kappa^2}{1 + \kappa^2} = \mathbf{1.00} \quad (\mathbf{100\%})
+    \end{equation*}
+    The crystal acts as an ideal optical mirror, exhibiting total reflection for all infrared frequencies in the Reststrahlen band.
+\end{enumerate}
+\end{checkpointbox}
+
+\vspace{0.4cm}
+
+\begin{checkpointbox}{Viva Question 4: Lorentz--Lorenz vs. Static Clausius--Mossotti Equation}
+\textbf{Question:} Why does the Lorentz--Lorenz relation determine the \emph{electronic polarizability} alone, while the static Clausius--Mossotti relation yields the \emph{sum of electronic and ionic polarizabilities}?
+
+\textbf{Comprehensive Model Answer:}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Mathematical Formulation:}
+    Both relations stem from the same cavity electrostatics $\mathbf{E}_{\text{loc}} = \mathbf{E} + \mathbf{P}/3\epsilon_0$:
+    \begin{equation*}
+        \text{Static Clausius--Mossotti: } \frac{\epsilon_r(0) - 1}{\epsilon_r(0) + 2} = \frac{N\alpha_{\text{total}}}{3\epsilon_0} = \frac{N(\alpha_e + \alpha_i + \alpha_{\text{dip}})}{3\epsilon_0}
+    \end{equation*}
+    \begin{equation*}
+        \text{Optical Lorentz--Lorenz: } \frac{n^2 - 1}{n^2 + 2} = \frac{N\alpha_e}{3\epsilon_0} \quad (\text{using } \epsilon_r(\omega_{\text{opt}}) = n^2)
+    \end{equation*}
+    \item \textbf{Microscopic Inertial Separation:}
+    The distinction is entirely governed by the characteristic dynamical timescales and resonant frequencies of the physical charge carriers:
+    \begin{itemize}
+        \item \textbf{Permanent Dipolar Reorientation ($\alpha_{\text{dip}}$):} Governed by molecular rotational diffusion. In liquids and solids, dipolar relaxation times are $\tau \sim 10^{-10}$--$10^{-9}\,\text{s}$ ($\omega \sim 10^{9}$--$10^{10}\,\text{rad s}^{-1}$). Above microwave frequencies, molecular dipoles cannot rotate fast enough to keep up with the alternating field.
+        \item \textbf{Ionic Displacement ($\alpha_i$):} Involves the physical displacement of whole atomic nuclei ($M_{\text{ion}} \sim 10^4 m_e$). The optical phonon resonant frequency is $\omega_{TO} \sim \sqrt{K/M_{\text{ion}}} \sim 10^{13}\,\text{rad s}^{-1}$ (infrared spectrum).
+        \item \textbf{Electronic Cloud Distortion ($\alpha_e$):} Involves the displacement of electrons with minuscule mass $m_e$. The electronic resonant frequencies lie in the ultraviolet $\omega_0 \sim \sqrt{K/m_e} \sim 10^{16}\,\text{rad s}^{-1}$.
+    \end{itemize}
+    \item \textbf{Diagnostic Power:}
+    In the visible spectrum ($\omega \sim 3 \times 10^{15}\,\text{rad s}^{-1}$), the frequency is far above the ionic resonance ($\omega \gg \omega_{TO}$), completely freezing out ionic displacements ($\alpha_i \to 0$), but well below electronic resonance ($\omega \ll \omega_0$). Consequently, the optical refractive index $n$ measures $\alpha_e$ in isolation. Subtracting the Lorentz--Lorenz value from the static Clausius--Mossotti value provides an unambiguous experimental tool to decouple electronic and ionic polarizabilities.
+\end{enumerate}
+\end{checkpointbox}
+
+\end{document}

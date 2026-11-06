@@ -1,0 +1,504 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1.8cm,top=2.0cm,bottom=2.0cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{microtype}
+\usepackage{lastpage}
+
+\definecolor{nitblue}{RGB}{16, 52, 116}
+\definecolor{solgreen}{RGB}{20, 110, 40}
+\definecolor{boxbg}{RGB}{246, 248, 252}
+
+\tcbset{
+    boxrule=0.8pt,
+    colback=boxbg,
+    colframe=nitblue,
+    arc=3pt,
+    left=6pt,
+    right=6pt,
+    top=4pt,
+    bottom=4pt
+}
+
+% Page styling and headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{NIT Calicut} \textbullet\ \textit{Department of Physics}}
+\fancyhead[R]{\small\textbf{PH7302E: Solutions \& Grading Rubric}}
+\fancyfoot[L]{\small\textit{End-Semester Examination Manual --- 2026--27}}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\fancyfoot[R]{\small\textit{Max Marks: 50}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\rubric}[1]{\par\vspace{2pt}\noindent{\small\color{solgreen}\textbf{[Marking Scheme: #1]}}\vspace{2pt}}
+
+\begin{document}
+
+% -------------------------------------------------------------
+% Header
+% -------------------------------------------------------------
+\noindent
+\rule{\textwidth}{1.0pt}\\[3pt]
+\noindent
+\textbf{Course Code:} PH7302E \hfill \textbf{Session:} Winter Semester 2026--27 \\
+\textbf{Course Title:} Condensed Matter Physics \hfill \textbf{Maximum Marks:} 50 \\
+\textbf{Evaluation Split:} Pre-Midterm 30\% (15 Marks) \hfill Post-Midterm 70\% (35 Marks)
+\vspace{2pt}
+\rule{\textwidth}{0.5pt}
+
+\vspace{2pt}
+\noindent{\small\textbf{Physical Constants:}
+$h = 6.626 \times 10^{-34}\text{ J}\cdot\text{s}$, $\hbar = 1.055 \times 10^{-34}\text{ J}\cdot\text{s}$, $e = 1.602 \times 10^{-19}\text{ C}$, $m_e = 9.109 \times 10^{-31}\text{ kg}$, $k_B = 1.381 \times 10^{-23}\text{ J}\cdot\text{K}^{-1}$, $N_A = 6.022 \times 10^{23}\text{ mol}^{-1}$, $\epsilon_0 = 8.854 \times 10^{-12}\text{ F}\cdot\text{m}^{-1}$, $\mu_0 = 4\pi \times 10^{-7}\text{ H}\cdot\text{m}^{-1}$, $\mu_B = 9.274 \times 10^{-24}\text{ J}\cdot\text{T}^{-1}$, $c = 2.998 \times 10^8\text{ m}\cdot\text{s}^{-1}$, $1\text{ eV} = 1.602 \times 10^{-19}\text{ J}$, $1\text{ amu} = 1.661 \times 10^{-27}\text{ kg}$.}
+\vspace{4pt}
+
+\vspace{6pt}
+% =============================================================
+% PART A SOLUTIONS
+% =============================================================
+\begin{center}
+    {\large\bfseries PART A: PRE-MIDTERM SOLUTIONS [15 MARKS]}
+\end{center}
+
+\vspace{4pt}
+\noindent\textbf{Question 1: Crystal Structure \& X-ray Diffraction [7 Marks]}
+\vspace{4pt}
+
+\noindent\textbf{(a) Structure Factor for Face-Centered Cubic (FCC) Lattice [4 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Definition:} The geometric structure factor $F_{hkl}$ for a unit cell containing atoms at fractional coordinates $\mathbf{r}_j = (x_j, y_j, z_j)$ is defined as:
+    \[
+    F_{hkl} = \sum_{j=1}^{N} f_j \exp\left[-2\pi i (h x_j + k y_j + l z_j)\right]
+    \]
+    where $f_j$ is the atomic scattering form factor of the $j$-th atom. \rubric{1.0 Mark for definition and formula}
+
+    \item \textbf{FCC Lattice Derivation:} The conventional FCC unit cell contains 4 identical atoms ($f_j = f$) at fractional coordinates:
+    \[
+    (0,0,0), \quad \left(\frac{1}{2}, \frac{1}{2}, 0\right), \quad \left(\frac{1}{2}, 0, \frac{1}{2}\right), \quad \left(0, \frac{1}{2}, \frac{1}{2}\right)
+    \]
+    Substituting these positions into the structure factor expression:
+    \[
+    F_{hkl} = f \left[ 1 + e^{-\pi i(h+k)} + e^{-\pi i(h+l)} + e^{-\pi i(k+l)} \right]
+    \]
+    Since $e^{-i\pi n} = (-1)^n$:
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item \textbf{Case 1: All $h, k, l$ are even:} Then $h+k$, $h+l$, and $k+l$ are all even integers. $(-1)^{\text{even}} = +1$.
+        \[
+        F_{hkl} = f [1 + 1 + 1 + 1] = 4f \implies |F_{hkl}|^2 = 16f^2
+        \]
+        \item \textbf{Case 2: All $h, k, l$ are odd:} Sum of two odd numbers is even: $h+k, h+l, k+l$ are all even.
+        \[
+        F_{hkl} = f [1 + 1 + 1 + 1] = 4f \implies |F_{hkl}|^2 = 16f^2
+        \]
+        \item \textbf{Case 3: Mixed indices (e.g., two even, one odd; or two odd, one even):}
+        Two of the pairwise sums will be odd and one will be even (or vice versa).
+        \[
+        F_{hkl} = f [1 + 1 - 1 - 1] = 0 \implies I_{hkl} \propto |F_{hkl}|^2 = 0
+        \]
+    \end{itemize}
+    Thus, reflections are \textbf{observed} only if $h, k, l$ are \textit{unmixed} (all even or all odd). Mixed reflections vanish identically. \rubric{2.0 Marks for derivation + 1.0 Mark for extinction rule conclusion}
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{(b) Powder XRD of Gold (FCC, $a = 4.08\text{ \AA}$, $\lambda = 1.5406\text{ \AA}$) [3 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Lowest-Angle Reflections:} For FCC, allowed $(hkl)$ in order of increasing $h^2+k^2+l^2$:
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item First peak: $(111)$ (all odd, $h^2+k^2+l^2 = 3$)
+        \item Second peak: $(200)$ (all even, $h^2+k^2+l^2 = 4$)
+        \item Note: $(100)$ and $(110)$ are mixed and forbidden.
+    \end{itemize} \rubric{1.0 Mark for identifying (111) and (200)}
+
+    \item \textbf{Interplanar Spacings and Bragg Angles:}
+    For a cubic crystal, $d_{hkl} = \frac{a}{\sqrt{h^2+k^2+l^2}}$, and Bragg's law is $\lambda = 2 d_{hkl} \sin\theta$.
+    \begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+        \item \textbf{For $(111)$ plane:}
+        \[
+        d_{111} = \frac{4.08\text{ \AA}}{\sqrt{1^2+1^2+1^2}} = \frac{4.08}{\sqrt{3}} \approx 2.3556\text{ \AA}
+        \]
+        \[
+        \sin\theta_{111} = \frac{\lambda}{2 d_{111}} = \frac{1.5406}{2 \times 2.3556} \approx 0.3270 \implies \mathbf{\theta_{111} \approx 19.09^\circ} \quad (2\theta \approx 38.18^\circ)
+        \]
+        \item \textbf{For $(200)$ plane:}
+        \[
+        d_{200} = \frac{4.08\text{ \AA}}{\sqrt{2^2+0+0}} = \frac{4.08}{2} = 2.0400\text{ \AA}
+        \]
+        \[
+        \sin\theta_{200} = \frac{\lambda}{2 d_{200}} = \frac{1.5406}{2 \times 2.0400} \approx 0.3776 \implies \mathbf{\theta_{200} \approx 22.18^\circ} \quad (2\theta \approx 44.37^\circ)
+        \]
+    \end{itemize} \rubric{1.0 Mark for $d_{hkl}$ + 1.0 Mark for $\theta$ values}
+\end{enumerate}
+
+\newpage
+
+\noindent\textbf{Question 2: Phonon Dynamics \& Free Electron Gas [8 Marks]}
+\vspace{4pt}
+
+\noindent\textbf{(a) Thermal Conductivity and Phonon Scattering Mechanisms [5 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Temperature Dependence of $\kappa_{ph}(T) = \frac{1}{3} C_v v \ell_{ph}$:}
+    \begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+        \item \textbf{Low Temperatures ($T \to 0\text{ K}$, $T \ll \Theta_D$):} Phonon population is very small; phonon-phonon scattering is negligible. The phonon mean free path $\ell_{ph}$ is limited only by sample boundaries / crystal size ($L$), so $\ell_{ph} \approx \text{constant}$. The sound velocity $v$ is independent of $T$. Hence, $\kappa_{ph}(T)$ follows the specific heat: $\kappa_{ph} \propto C_v \propto T^3$.
+        \item \textbf{Intermediate Temperatures ($T \sim 0.1\,\Theta_D$):} $C_v$ continues to rise toward Dulong-Petit saturation, while Umklapp scattering begins to turn on with an activation behavior $\ell_{ph} \propto e^{\Theta_D / (b T)}$. The product $C_v \ell_{ph}$ goes through a prominent \textbf{thermal conductivity maximum}.
+        \item \textbf{High Temperatures ($T \gg \Theta_D$):} Specific heat saturates to the classical Dulong-Petit constant value $3Nk_B$. The number of thermal phonons excited is proportional to $T$ ($n_{ph} \propto k_BT/\hbar\omega$). The phonon collision rate is proportional to the number of scatterers, so $\ell_{ph} \propto 1/T$. Consequently, $\kappa_{ph} \propto 1/T$.
+    \end{itemize} \rubric{2.5 Marks for explaining the three regimes and identifying the peak}
+
+    \item \textbf{Normal ($N$) vs Umklapp ($U$) Processes:}
+    \begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+        \item In a 3-phonon collision: $\mathbf{q}_1 + \mathbf{q}_2 = \mathbf{q}_3 + \mathbf{G}$.
+        \item \textbf{Normal ($N$) Process ($\mathbf{G} = 0$):} $\mathbf{q}_1 + \mathbf{q}_2 = \mathbf{q}_3$. Crystal momentum is conserved. Energy is redistributed among phonon modes, but the total heat current $\mathbf{J}_Q = \sum \hbar \mathbf{q} v_g$ is conserved. Therefore, $N$-processes alone cannot degrade heat current or produce thermal resistance.
+        \item \textbf{Umklapp ($U$) Process ($\mathbf{G} \neq 0$):} The vector sum $\mathbf{q}_1 + \mathbf{q}_2$ extends outside the first Brillouin zone and is folded back by a non-zero reciprocal lattice vector $\mathbf{G}$. The resulting wavevector $\mathbf{q}_3 = \mathbf{q}_1 + \mathbf{q}_2 - \mathbf{G}$ has a component opposite to the original direction of energy flow. This destroys net phonon momentum, establishing a finite steady-state temperature gradient and non-zero thermal resistivity ($W_{ph} = 1/\kappa_{ph} > 0$).
+    \end{itemize} \rubric{2.5 Marks for vector equations, role of $\mathbf{G}$, and momentum degradation}
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{(b) Wiedemann-Franz Law and Lorenz Number [3 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Wiedemann-Franz Law and Lorenz Number:}
+    The ratio of electronic thermal conductivity $\kappa_e$ to electrical conductivity $\sigma$ is directly proportional to absolute temperature $T$:
+    \[
+    \frac{\kappa_e}{\sigma T} = L \quad (\text{Lorenz Number})
+    \]
+    From Sommerfeld quantum theory: $\sigma = \frac{n e^2 \tau}{m}$ and $\kappa_e = \frac{1}{3} C_{ve} v_F^2 \tau = \frac{\pi^2}{3} \frac{n k_B^2 T \tau}{m}$.
+    Dividing the two:
+    \[
+    L = \frac{\pi^2}{3} \left( \frac{k_B}{e} \right)^2
+    \]
+    Numerical evaluation:
+    \[
+    L = \frac{\pi^2}{3} \left( \frac{1.38065 \times 10^{-23}\text{ J/K}}{1.60218 \times 10^{-19}\text{ C}} \right)^2 \approx \mathbf{2.443 \times 10^{-8}\text{ W}\cdot\Omega\cdot\text{K}^{-2}} \quad (\text{or }\text{V}^2/\text{K}^2)
+    \] \rubric{1.5 Marks for formulation and correct value of $L$}
+
+    \item \textbf{Thermal Conductivity of Copper at $300\text{ K}$:}
+    Given $\sigma = 5.90 \times 10^7\text{ }\Omega^{-1}\cdot\text{m}^{-1}$ and $T = 300\text{ K}$:
+    \[
+    \kappa_e = L \sigma T = (2.443 \times 10^{-8}\text{ W}\cdot\Omega\cdot\text{K}^{-2}) \times (5.90 \times 10^7\text{ }\Omega^{-1}\cdot\text{m}^{-1}) \times (300\text{ K})
+    \]
+    \[
+    \mathbf{\kappa_e \approx 432.4\text{ W}\cdot\text{m}^{-1}\cdot\text{K}^{-1}}
+    \] \rubric{1.5 Marks for calculation and correct units}
+\end{enumerate}
+
+\newpage
+
+% =============================================================
+% PART B SOLUTIONS
+% =============================================================
+\begin{center}
+    {\large\bfseries PART B: POST-MIDTERM SOLUTIONS [35 MARKS]}
+\end{center}
+
+\vspace{4pt}
+\noindent\textbf{Question 3: Periodic Potentials, Bloch Theorem \& Band Theory [10 Marks]}
+\vspace{4pt}
+
+\noindent\textbf{(a) Nearly Free Electron (NFE) Model and Band Gap [6 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Bloch's Theorem:} The eigenstates $\psi_k(x)$ of the one-electron Schr\"odinger equation in a periodic potential $V(x) = V(x+a)$ are of the form:
+    \[
+    \psi_k(x) = e^{i k x} u_k(x), \quad \text{where } u_k(x+a) = u_k(x) \text{ has lattice periodicity.}
+    \]
+    Equivalently, $\psi_k(x+a) = e^{i k a} \psi_k(x)$. \rubric{1.0 Mark}
+
+    \item \textbf{Two-Band Secular Equation Setup:}
+    Substitute trial wavefunction $\psi(x) = C_1 e^{i k x} + C_2 e^{i(k-G)x}$ into $-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V(x)\psi = E\psi$.
+    Writing $V(x) = 2V_1 \cos(Gx) = V_1 e^{i G x} + V_1 e^{-i G x}$ (with $V_1 = V_G = V_{-G}$ real), and taking inner products with $\langle e^{i k x}|$ and $\langle e^{i(k-G)x}|$:
+    \[
+    \begin{aligned}
+    \left( \frac{\hbar^2 k^2}{2m} - E \right) C_1 + V_1 C_2 &= 0 \\
+    V_1 C_1 + \left( \frac{\hbar^2 (k-G)^2}{2m} - E \right) C_2 &= 0
+    \end{aligned}
+    \]
+    For non-trivial coefficients $(C_1, C_2) \neq 0$, the determinant must vanish:
+    \[
+    \begin{vmatrix}
+    E_0(k) - E & V_1 \\
+    V_1 & E_0(k-G) - E
+    \end{vmatrix} = 0
+    \]
+    where $E_0(k) = \frac{\hbar^2 k^2}{2m}$ is the free-electron kinetic energy. \rubric{2.0 Marks for setting up matrix}
+
+    \item \textbf{Band Gap Opening at Zone Boundary:}
+    At the zone boundary $k = G/2 = \pi/a$, we have $k-G = -G/2$, so the kinetic energies are equal:
+    \[
+    E_0(G/2) = E_0(-G/2) = \frac{\hbar^2 (G/2)^2}{2m} = E_B
+    \]
+    The secular equation simplifies to:
+    \[
+    (E_B - E)^2 - V_1^2 = 0 \implies E_B - E = \pm V_1 \implies \mathbf{E_\pm = E_B \pm |V_1|}
+    \]
+    The lower standing-wave state has energy $E_- = E_B - |V_1|$ (probability density piles up at the attractive ion cores), while the upper standing-wave state has energy $E_+ = E_B + |V_1|$ (probability density piles up between ions).
+    The forbidden energy gap is:
+    \[
+    \mathbf{E_g = E_+ - E_- = 2|V_1|}
+    \] \rubric{2.0 Marks for solving eigenvalues and finding $E_g$}
+
+    \item \textbf{Reduced Zone Scheme Sketch:}
+    The band structure consists of two energy branches $E_1(k)$ and $E_2(k)$ within $-\pi/a \le k \le +\pi/a$. At $k=0$, $E_1(0) = 0$; at $k = \pm \pi/a$, $E_1(\pm\pi/a) = E_B - |V_1|$ and $E_2(\pm\pi/a) = E_B + |V_1|$, with zero group velocity ($dE/dk = 0$) at zone boundaries. \rubric{1.0 Mark for correct sketch}
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{(b) Tight-Binding Model (1D Chain) [4 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Dispersion Derivation:} Representing the Bloch state as $\psi_k(x) = \frac{1}{\sqrt{N}} \sum_n e^{i k n a} \phi(x - n a)$:
+    \[
+    E(k) = \frac{\langle \psi_k | \hat{H} | \psi_k \rangle}{\langle \psi_k | \psi_k \rangle} = \epsilon_0 - t e^{i k a} - t e^{-i k a} = \mathbf{\epsilon_0 - 2t \cos(ka)}
+    \]
+    where $\epsilon_0 = \langle \phi_n | \hat{H} | \phi_n \rangle$ and $t = -\langle \phi_n | \hat{H} | \phi_{n\pm 1} \rangle > 0$. \rubric{2.0 Marks}
+
+    \item \textbf{Total Bandwidth $W$:}
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item Minimum energy at $k = 0$: $E_{min} = \epsilon_0 - 2t$.
+        \item Maximum energy at $k = \pi/a$: $E_{max} = \epsilon_0 + 2t$.
+        \item Bandwidth: $\mathbf{W = E_{max} - E_{min} = 4t}$. \rubric{1.0 Mark}
+    \end{itemize}
+
+    \item \textbf{Effective Mass $m^*$:}
+    Differentiating: $\frac{dE}{dk} = 2t a \sin(ka)$, and $\frac{d^2E}{dk^2} = 2t a^2 \cos(ka)$.
+    \[
+    m^*(k) = \frac{\hbar^2}{d^2E/dk^2} = \frac{\hbar^2}{2t a^2 \cos(ka)}
+    \]
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item At band bottom ($k = 0$): $\cos(0) = +1 \implies \mathbf{m^*(0) = \frac{\hbar^2}{2t a^2}} > 0$ (electron-like).
+        \item At band top ($k = \pi/a$): $\cos(\pi) = -1 \implies \mathbf{m^*(\pi/a) = -\frac{\hbar^2}{2t a^2}} < 0$ (negative effective mass).
+    \end{itemize} \rubric{1.0 Mark}
+\end{enumerate}
+
+\newpage
+
+\noindent\textbf{Question 4: Band Dynamics \& Semiconductors [8 Marks]}
+\vspace{4pt}
+
+\noindent\textbf{(a) Band Dynamics, Effective Mass, and Holes [4 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Effective Mass Derivation:}
+    Work done on an electron in wave packet by field $\mathcal{E}$ in time $dt$:
+    \[
+    dE = F v_g dt = (-e \mathcal{E}) v_g dt = \hbar \frac{dk}{dt} v_g dt = \hbar v_g dk \implies \frac{dk}{dt} = \frac{F}{\hbar}
+    \]
+    Differentiating group velocity $v_g = \frac{1}{\hbar}\frac{dE}{dk}$ with respect to time:
+    \[
+    a = \frac{dv_g}{dt} = \frac{1}{\hbar}\frac{d}{dt}\left(\frac{dE}{dk}\right) = \frac{1}{\hbar} \frac{d^2E}{dk^2} \frac{dk}{dt} = \frac{1}{\hbar^2}\frac{d^2E}{dk^2} F
+    \]
+    Comparing with Newton's second law $F = m^* a$, we obtain:
+    \[
+    \mathbf{m^* = \hbar^2 \left( \frac{d^2E}{dk^2} \right)^{-1}}
+    \] \rubric{1.5 Marks}
+
+    \item \textbf{Negative Effective Mass and Concept of Holes:}
+    Near the top of the band, the dispersion curve is convex downward ($\frac{d^2E}{dk^2} < 0$), giving $m^* < 0$. Physically, Bragg reflection from the lattice planes produces an internal reaction force from the periodic potential that exceeds the external field force, causing the electron to accelerate in the opposite direction.
+    A full band carries zero net current. Removing an electron of wavevector $\mathbf{k}_e$, energy $E_e$, and charge $-e$ leaves a vacancy with:
+    \[
+    \mathbf{k}_h = -\mathbf{k}_e, \quad E_h = -E_e, \quad q_h = +e, \quad m_h^* = -m_e^* > 0
+    \]
+    This vacancy is treated as a quasiparticle called a \textbf{hole}. \rubric{1.5 Marks}
+
+    \item \textbf{Bloch Oscillations:} An electron in an electric field moves across $k$-space at rate $\hbar \dot{k} = -e\mathcal{E}$. As it reaches the Brillouin zone boundary, it undergoes Bragg reflection to $-G/2$, executing periodic oscillations in real and $k$-space with frequency $\omega_B = \frac{e\mathcal{E}a}{\hbar}$. In bulk metals, the electron scattering time $\tau \sim 10^{-14}\text{ s}$ is far shorter than the oscillation period ($\tau \ll T_B = \frac{2\pi\hbar}{e\mathcal{E}a}$), so electrons scatter long before completing an oscillation. \rubric{1.0 Mark}
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{(b) Semiconductor Carrier Statistics \& Silicon Calculation [4 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Intrinsic Carrier Concentration $n_i(T)$:}
+    For non-degenerate carrier statistics ($E_c - E_F \gg k_B T$ and $E_F - E_v \gg k_B T$):
+    \[
+    n = N_c e^{-(E_c - E_F)/k_B T}, \quad p = N_v e^{-(E_F - E_v)/k_B T}
+    \]
+    In an intrinsic material, $n = p = n_i$. Multiplying the two (Law of Mass Action):
+    \[
+    n_i^2 = n p = N_c N_v \exp\left(-\frac{E_c - E_v}{k_B T}\right) = N_c N_v \exp\left(-\frac{E_g}{k_B T}\right)
+    \]
+    Taking the square root gives: $\mathbf{n_i(T) = \sqrt{N_c N_v}\, e^{-E_g / (2 k_B T)}}$. \rubric{1.5 Marks}
+
+    \item \textbf{Intrinsic Fermi Level $E_{Fi}$:}
+    Equating $n = p$:
+    \[
+    N_c e^{-(E_c - E_{Fi})/k_B T} = N_v e^{-(E_{Fi} - E_v)/k_B T} \implies e^{2 E_{Fi}/k_B T} = \frac{N_v}{N_c} e^{(E_c + E_v)/k_B T}
+    \]
+    Taking the natural logarithm:
+    \[
+    E_{Fi} = \frac{E_c + E_v}{2} + \frac{1}{2} k_B T \ln\left(\frac{N_v}{N_c}\right) = \mathbf{\frac{E_c + E_v}{2} + \frac{3}{4} k_B T \ln\left(\frac{m_h^*}{m_e^*}\right)}
+    \] \rubric{1.0 Mark}
+
+    \item \textbf{Numerical Calculation for Silicon ($T = 300\text{ K}$):}
+    $k_B T = 1.38065 \times 10^{-23} \times 300 / 1.60218 \times 10^{-19} \approx 0.02585\text{ eV}$.
+    \[
+    N_c = 2\left(\frac{2\pi \times 1.08 \times 9.109 \times 10^{-31} \times 1.38065 \times 10^{-23} \times 300}{(6.626 \times 10^{-34})^2}\right)^{3/2} \approx \mathbf{2.82 \times 10^{25}\text{ m}^{-3}} \quad (2.82 \times 10^{19}\text{ cm}^{-3})
+    \]
+    \[
+    N_v = N_c \left(\frac{m_h^*}{m_e^*}\right)^{3/2} = 2.82 \times 10^{25} \times \left(\frac{0.56}{1.08}\right)^{3/2} \approx \mathbf{1.05 \times 10^{25}\text{ m}^{-3}} \quad (1.05 \times 10^{19}\text{ cm}^{-3})
+    \]
+    \[
+    n_i = \sqrt{N_c N_v} e^{-E_g / 2 k_B T} = \sqrt{2.82 \times 1.05 \times 10^{50}} \exp\left(-\frac{1.12}{2 \times 0.02585}\right)
+    \]
+    \[
+    n_i \approx 1.72 \times 10^{25} \times e^{-21.66} \approx \mathbf{6.73 \times 10^{15}\text{ m}^{-3}} \quad (\mathbf{6.73 \times 10^9\text{ cm}^{-3}})
+    \]
+    Fermi level shift from midgap:
+    \[
+    \Delta E_{Fi} = \frac{3}{4} k_B T \ln\left(\frac{0.56}{1.08}\right) = 0.75 \times 25.85\text{ meV} \times (-0.6568) \approx \mathbf{-12.73\text{ meV}}
+    \]
+    The intrinsic Fermi level lies $12.7\text{ meV}$ below midgap because holes are lighter than electrons ($m_h^* < m_e^*$). \rubric{1.5 Marks}
+\end{enumerate}
+
+\newpage
+
+\noindent\textbf{Question 5: Dielectrics \& Optical Properties [9 Marks]}
+\vspace{4pt}
+
+\noindent\textbf{(a) Local Field and Clausius-Mossotti Derivation [5 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Macroscopic vs Local Electric Field:}
+    The macroscopic field $\mathbf{E}$ is the spatial average of the microscopic electric field over many unit cells. The local field $\mathbf{E}_{loc}$ is the actual field experienced by a single atom at its specific site, excluding the field produced by the atom itself. \rubric{1.0 Mark}
+
+    \item \textbf{Lorentz Local Field Derivation:}
+    Construct a spherical Lorentz cavity around the reference site. The local field is composed of:
+    \[
+    \mathbf{E}_{loc} = \mathbf{E} + \mathbf{E}_1 + \mathbf{E}_2
+    \]
+    where $\mathbf{E}$ is the applied macroscopic field (including plate polarization), $\mathbf{E}_1$ is the field due to surface polarization charge on the spherical cavity, and $\mathbf{E}_2$ is the sum of dipole fields inside the sphere. For cubic symmetry, $\mathbf{E}_2 = 0$.
+    Surface charge density on cavity surface is $\sigma_{pol} = -P \cos\theta$. Integrating over the sphere:
+    \[
+    \mathbf{E}_1 = \int \frac{\sigma_{pol} \cos\theta}{4\pi\epsilon_0 R^2} dA = \frac{P}{4\pi\epsilon_0} \int_0^\pi \cos^2\theta (2\pi \sin\theta d\theta) = \frac{\mathbf{P}}{3\epsilon_0}
+    \]
+    Therefore, $\mathbf{E}_{loc} = \mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0}$. \rubric{1.5 Marks}
+
+    \item \textbf{Clausius-Mossotti Relation:}
+    Polarization is related to atomic polarizability $\alpha$ by $\mathbf{P} = N \alpha \mathbf{E}_{loc} = N \alpha \left(\mathbf{E} + \frac{\mathbf{P}}{3\epsilon_0}\right)$.
+    Solving for $\mathbf{P}$:
+    \[
+    \mathbf{P} \left(1 - \frac{N\alpha}{3\epsilon_0}\right) = N \alpha \mathbf{E} \implies \mathbf{P} = \frac{N \alpha}{1 - \frac{N\alpha}{3\epsilon_0}} \mathbf{E}
+    \]
+    Using $\mathbf{D} = \epsilon_0 \epsilon_r \mathbf{E} = \epsilon_0 \mathbf{E} + \mathbf{P} \implies \mathbf{P} = \epsilon_0 (\epsilon_r - 1) \mathbf{E}$:
+    \[
+    \epsilon_0 (\epsilon_r - 1) = \frac{N \alpha}{1 - \frac{N\alpha}{3\epsilon_0}} \implies \frac{\epsilon_r - 1}{\epsilon_r + 2} = \frac{N \alpha}{3\epsilon_0}
+    \] \rubric{1.5 Marks}
+
+    \item \textbf{Polarization Catastrophe:} When the condition $\frac{N\alpha}{3\epsilon_0} \to 1$ is approached, the denominator diverges, meaning $\epsilon_r \to \infty$. This instability causes a spontaneous polarization $\mathbf{P} \neq 0$ even in zero external field, driving the material into the \textbf{ferroelectric phase}. \rubric{1.0 Mark}
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{(b) Plasma Oscillations and Optical Properties [4 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Dielectric Function Derivation:}
+    Equation of motion for an undamped electron: $m_e \frac{d^2 x}{dt^2} = -e E_0 e^{-i\omega t}$.
+    Assuming $x(t) = x_0 e^{-i\omega t}$: $-m_e \omega^2 x = -e E \implies x = \frac{e E}{m_e \omega^2}$.
+    The dipole moment per unit volume is $P = -n e x = -\frac{n e^2 E}{m_e \omega^2}$.
+    Displacement: $D = \epsilon_0 E + P = \epsilon_0 \left(1 - \frac{n e^2}{\epsilon_0 m_e \omega^2}\right) E = \epsilon_0 \epsilon(\omega) E$.
+    Hence:
+    \[
+    \mathbf{\epsilon(\omega) = 1 - \frac{\omega_p^2}{\omega^2}}, \quad \text{with } \mathbf{\omega_p = \sqrt{\frac{n e^2}{\epsilon_0 m_e}}}
+    \] \rubric{1.5 Marks}
+
+    \item \textbf{Reflectance and Transparency:}
+    Refractive index $\tilde{n} = \sqrt{\epsilon(\omega)}$.
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item For $\omega < \omega_p$: $\epsilon(\omega) < 0 \implies \tilde{n} = i \kappa$ is purely imaginary. Light waves decay exponentially inside the metal (evanescent skin effect). Normal reflectance $R = \left|\frac{\tilde{n}-1}{\tilde{n}+1}\right|^2 = \frac{\kappa^2+1}{\kappa^2+1} = 1.0$. The metal is \textbf{totally reflecting / shiny}.
+        \item For $\omega > \omega_p$: $\epsilon(\omega) > 0 \implies \tilde{n}$ is real. Light propagates through the medium without attenuation. The metal becomes \textbf{transparent} (ultraviolet transparency).
+    \end{itemize} \rubric{1.5 Marks}
+
+    \item \textbf{Numerical Calculation ($n = 6.00 \times 10^{28}\text{ m}^{-3}$):}
+    \[
+    \omega_p = \sqrt{\frac{(6.00 \times 10^{28}) \times (1.60218 \times 10^{-19})^2}{8.85419 \times 10^{-12} \times 9.10938 \times 10^{-31}}} = \sqrt{\frac{1.5402 \times 10^{-9}}{8.0656 \times 10^{-42}}} \approx \mathbf{1.382 \times 10^{16}\text{ rad}\cdot\text{s}^{-1}}
+    \]
+    \[
+    \nu_p = \frac{\omega_p}{2\pi} = \frac{1.382 \times 10^{16}}{2\pi} \approx \mathbf{2.20 \times 10^{15}\text{ Hz}}
+    \]
+    \[
+    \lambda_p = \frac{c}{\nu_p} = \frac{2.998 \times 10^8\text{ m/s}}{2.20 \times 10^{15}\text{ s}^{-1}} \approx 1.363 \times 10^{-7}\text{ m} = \mathbf{136.3\text{ nm}} \quad (\text{Vacuum Ultraviolet})
+    \] \rubric{1.0 Mark}
+\end{enumerate}
+
+\newpage
+
+\noindent\textbf{Question 6: Magnetism \& Exchange Interaction [8 Marks]}
+\vspace{4pt}
+
+\noindent\textbf{(a) Weiss Molecular Field Theory \& Curie-Weiss Law [4 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Molecular Field Hypothesis:} Weiss assumed that atomic magnetic moments interact through an effective internal magnetic field $B_{eff}$ proportional to the magnetization:
+    \[
+    B_{eff} = B_a + \lambda M
+    \]
+    where $B_a$ is the external field and $\lambda$ is the Weiss molecular field parameter. \rubric{1.0 Mark}
+
+    \item \textbf{Derivation of Curie-Weiss Law:}
+    Above the transition temperature, moments follow Curie's law with respect to $B_{eff}$:
+    \[
+    M = \frac{C}{T} B_{eff} = \frac{C}{T} (B_a + \lambda M)
+    \]
+    Rearranging terms:
+    \[
+    M \left( 1 - \frac{\lambda C}{T} \right) = \frac{C}{T} B_a \implies M \left( \frac{T - \lambda C}{T} \right) = \frac{C}{T} B_a \implies M = \frac{C B_a}{T - \lambda C}
+    \]
+    The magnetic susceptibility $\chi = M / B_a$ is therefore:
+    \[
+    \mathbf{\chi = \frac{C}{T - \theta_C}}, \quad \text{with } \mathbf{\theta_C = \lambda C}
+    \]
+    This is the \textbf{Curie-Weiss law}. The singularity at $T = \theta_C = T_C$ marks the onset of ferromagnetic order. \rubric{1.5 Marks}
+
+    \item \textbf{Spontaneous Magnetization below $T_C$:}
+    In zero applied field ($B_a = 0$), $B_{eff} = \lambda M$. The magnetization satisfies the self-consistent relation:
+    \[
+    \frac{M}{M_s} = \tanh\left( \frac{g \mu_B S \lambda M}{k_B T} \right) \quad \text{or } m = \tanh\left( \frac{T_C}{T} m \right)
+    \]
+    Plotting $y_1 = m$ and $y_2 = \tanh((T_C/T)m)$ against $m$:
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item For $T > T_C$, initial slope $\frac{T_C}{T} < 1$; the only intersection is at $m = 0$ (paramagnetic state).
+        \item For $T < T_C$, initial slope $\frac{T_C}{T} > 1$; a non-zero stable root $m_0 \neq 0$ exists, corresponding to \textbf{spontaneous magnetization}. \rubric{1.5 Marks}
+    \end{itemize}
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{(b) Quantum Exchange Interaction \& Antiferromagnetism [4 Marks]}
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=3pt]
+    \item \textbf{Failure of Dipolar Interactions:}
+    The interaction energy between two Bohr magnetons separated by interatomic distance $a \approx 3\text{ \AA}$ is:
+    \[
+    E_{dip} \sim \frac{\mu_0 \mu_B^2}{4\pi a^3} \approx 10^{-23}\text{ J} \implies T_{dip} \sim \frac{E_{dip}}{k_B} \approx 1\text{ K}
+    \]
+    Classical dipolar coupling predicts ferromagnetic ordering only below $\sim 1\text{ K}$, failing by a factor of $10^3$ to explain real materials like Iron ($T_C = 1043\text{ K}$). \rubric{1.0 Mark}
+
+    \item \textbf{Heisenberg Exchange Interaction:}
+    For a two-electron system, the spatial wavefunction must be symmetric (antisymmetric) when the spin state is a singlet $S=0$ (triplet $S=1$). The difference in electrostatic Coulomb energy between singlet and triplet states is $E_{singlet} - E_{triplet} = 2J$, where $J$ is the exchange integral:
+    \[
+    J = \int \phi_A^*(\mathbf{r}_1) \phi_B^*(\mathbf{r}_2) \frac{e^2}{4\pi\epsilon_0 |\mathbf{r}_1 - \mathbf{r}_2|} \phi_A(\mathbf{r}_2) \phi_B(\mathbf{r}_1) d^3r_1 d^3r_2
+    \]
+    Using $\mathbf{S}_1 \cdot \mathbf{S}_2 = \frac{1}{2}[S_{tot}(S_{tot}+1) - S_1(S_1+1) - S_2(S_2+1)]$, this energy difference can be represented as the spin Hamiltonian:
+    \[
+    \hat{H}_{ex} = -2 J \mathbf{S}_1 \cdot \mathbf{S}_2 \quad \text{or for a lattice } \hat{H}_{ex} = -2 \sum_{i < j} J_{ij} \mathbf{S}_i \cdot \mathbf{S}_j
+    \]
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item \textbf{Ferromagnetic ($J > 0$):} Parallel spin alignment ($\uparrow\uparrow$) minimizes energy.
+        \item \textbf{Antiferromagnetic ($J < 0$):} Antiparallel spin alignment ($\uparrow\downarrow$) minimizes energy. \rubric{1.5 Marks}
+    \end{itemize}
+
+    \item \textbf{Antiferromagnetic Susceptibility $\chi(T)$:}
+    \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+        \item For $T > T_N$: Susceptibility follows the Curie-Weiss law: $\chi = \frac{C}{T + \theta_N}$ (with positive $\theta_N$).
+        \item At $T = T_N$: Susceptibility reaches a maximum cusp.
+        \item Below $T_N$:
+        \begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+            \item \textbf{Perpendicular field ($\chi_\perp$):} Spins cant against exchange field; $\chi_\perp \approx \text{constant}$ independent of $T$.
+            \item \textbf{Parallel field ($\chi_\parallel$):} Spins cannot cant; thermal excitation is required to flip spins against the internal exchange field. As $T \to 0\text{ K}$, $\chi_\parallel \to 0$. \rubric{1.5 Marks}
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\vspace{10pt}
+\begin{center}
+    \rule{0.6\textwidth}{0.6pt}\\[4pt]
+    \textbf{*** END OF COMPREHENSIVE SOLUTIONS MANUAL ***}
+\end{center}
+
+\end{document}
